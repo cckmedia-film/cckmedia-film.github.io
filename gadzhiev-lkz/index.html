@@ -77,7 +77,7 @@ table.tc th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-t
 .tcwrap{overflow-x:auto}
 
 /* animatic */
-.anim{padding-block:8px 24px}
+.anim{padding-block:8px 48px}
 .anim-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .anim-head .hint{font-size:13px;color:var(--muted)}
 .stage{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--stage);border-radius:14px;overflow:hidden}
@@ -168,7 +168,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   <div class="eyebrow">Глазная клиника доктора Гаджиева · сценарий и раскадровка</div>
   <h1>Лазерная коррекция зрения за&nbsp;15&nbsp;000&nbsp;₽: «Враг в очках»</h1>
   <div class="meta"><span>⏱ <b id="m-dur">0:15</b></span><span><b id="m-scenes">8</b> сцен</span><span>формат <b>16:9</b></span><span>ТВ · сайт · соцсети</span></div>
-  <p class="lead">Будущий ролик сцена за сценой. Основная версия 15 секунд. Версия 30 секунд для сайта — это те же кадры плюс вставки, без перестановок. Сначала посмотрите аниматик, потом прочитайте сценарий, дальше идут кадры с описаниями.</p>
+  <p class="lead">Будущий ролик сцена за сценой. Основная версия 15 секунд. Версия 30 секунд для сайта — это те же кадры плюс вставки, без перестановок. Сначала прочитайте сценарий, дальше идут кадры с описаниями, а в самом конце — аниматик.</p>
   <div class="pills">
     <button class="pill" id="b-intro" aria-expanded="false" aria-controls="p-intro">▸ Вводные</button>
     <button class="pill" id="b-hero" aria-expanded="false" aria-controls="p-hero">▸ Герой</button>
@@ -214,29 +214,6 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </section>
 </header>
 
-<section class="anim wrap" aria-label="Аниматик">
-  <div class="anim-head">
-    <h2>Аниматик</h2>
-    <span class="hint">Кадры идут в реальном хронометраже, камера двигается так, как задумано. Стрелки показывают движение.</span>
-  </div>
-  <div class="stage" id="stage">
-    <img id="st-img" src="img/S1.jpg" alt="Текущий кадр аниматика">
-    <svg class="arrows" id="st-arrows" viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"></svg>
-    <div class="hud"><span id="st-id">S1</span><span id="st-tc">0:00.0</span><span class="tag" id="st-type">ИИ</span><span id="st-move" style="font-weight:400;opacity:.9"></span></div>
-    <div class="sub" id="st-sub"></div>
-  </div>
-  <div class="ctrl">
-    <button class="btn primary" id="play">▶ Смотреть</button>
-    <button class="btn" id="restart">↺ С начала</button>
-    <button class="btn" id="tog-arrows" aria-pressed="true">Стрелки: вкл</button>
-    <a class="btn" href="video/animatic_15s.mp4" download>⬇ Аниматик 15 с</a>
-    <a class="btn" href="video/animatic_30s.mp4" download>⬇ Аниматик 30 с</a>
-    <span class="time" id="st-time">0:00.0 / 0:15.0</span>
-  </div>
-  <div class="strip" id="strip" aria-label="Кадры по времени"></div>
-  <div class="legend"><span style="--c:var(--arrow-obj)">движение объекта</span><span class="cam">движение камеры</span><span style="--c:var(--ai)">ИИ</span><span style="--c:var(--live)">съёмка в клинике</span></div>
-</section>
-
 <div class="bar">
   <div class="wrap">
     <div class="row">
@@ -262,6 +239,28 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </details>
   <div id="list" style="display:flex;flex-direction:column;gap:16px"></div>
 </main>
+<section class="anim wrap" aria-label="Аниматик">
+  <div class="anim-head">
+    <h2>Аниматик</h2>
+    <span class="hint">Кадры идут в реальном хронометраже, камера двигается так, как задумано. Стрелки показывают движение.</span>
+  </div>
+  <div class="stage" id="stage">
+    <img id="st-img" src="img/S1.jpg" alt="Текущий кадр аниматика">
+    <svg class="arrows" id="st-arrows" viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="hud"><span id="st-id">S1</span><span id="st-tc">0:00.0</span><span class="tag" id="st-type">ИИ</span><span id="st-move" style="font-weight:400;opacity:.9"></span></div>
+    <div class="sub" id="st-sub"></div>
+  </div>
+  <div class="ctrl">
+    <button class="btn primary" id="play">▶ Смотреть</button>
+    <button class="btn" id="restart">↺ С начала</button>
+    <button class="btn" id="tog-arrows" aria-pressed="true">Стрелки: вкл</button>
+    <a class="btn" href="video/animatic_15s.mp4" download>⬇ Аниматик 15 с</a>
+    <a class="btn" href="video/animatic_30s.mp4" download>⬇ Аниматик 30 с</a>
+    <span class="time" id="st-time">0:00.0 / 0:15.0</span>
+  </div>
+  <div class="strip" id="strip" aria-label="Кадры по времени"></div>
+  <div class="legend"><span style="--c:var(--arrow-obj)">движение объекта</span><span class="cam">движение камеры</span><span style="--c:var(--ai)">ИИ</span><span style="--c:var(--live)">съёмка в клинике</span></div>
+</section>
 <footer class="wrap">CCK Media · cckmedia-film.github.io<br>Кадры раскадровки сгенерированы в Nano Banana 2 (Syntx), 16:9. Кадры с пометкой «Съёмка» — ориентир для оператора: в ролике они будут сняты вживую в клинике.</footer>
 
 <script>
