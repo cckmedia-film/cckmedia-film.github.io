@@ -142,6 +142,7 @@ main{padding-block:20px 60px;display:flex;flex-direction:column;gap:16px}
 .tag.done{background:var(--emerald);color:var(--surface)}
 .dur{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
 .sp{flex:1}
+.icon-btn[aria-pressed="false"].arr,#tog-arrows-all[aria-pressed="false"]{opacity:.6}
 .icon-btn{border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:10px;height:36px;min-width:36px;padding:0 10px;font:13px var(--f-mono);cursor:pointer;display:grid;place-items:center}
 .card.done .chk{background:var(--emerald);border-color:var(--emerald);color:var(--surface)}
 .cbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
@@ -226,6 +227,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
         <button data-f="live" aria-pressed="false">Съёмка</button>
         <button data-f="ai" aria-pressed="false">ИИ</button>
       </div>
+      <button class="icon-btn" id="tog-arrows-all" aria-pressed="true" title="Показать или скрыть стрелки движения на всех кадрах">↗ Стрелки: вкл</button>
       <div class="progress"><span>✓ <b id="p-done">0</b> из <b id="p-total">0</b> снято</span><div class="track"><i id="p-bar"></i></div></div>
     </div>
     <input class="search" id="q" type="search" placeholder="Поиск по словам и фразам…" aria-label="Поиск по сценарию">
@@ -372,6 +374,7 @@ const SCRIPT={
 };
 
 const state={v:"15",f:"all",q:"",arrows:true};
+let hid={};
 let done={};
 try{done=JSON.parse(localStorage.getItem("gk-done")||"{}")}catch(e){done={}}
 try{const s=JSON.parse(localStorage.getItem("gk-view")||"{}");if(s.v)state.v=s.v;if(s.f)state.f=s.f}catch(e){}
@@ -437,11 +440,12 @@ function render(){
         ${s.spine?"":'<span class="tag ins">вставка 30 с</span>'}
         <span class="dur">${s.d.toFixed(1)} с</span>
         <span class="sp"></span>
+        <button class="icon-btn arr" aria-pressed="${!hid[s.id]}" title="Показать или скрыть стрелки на этом кадре" aria-label="Стрелки на кадре ${s.id}">↗ ${state.arrows&&!hid[s.id]?"вкл":"выкл"}</button>
         <button class="icon-btn jump" title="Смотреть в аниматике" aria-label="Смотреть ${s.id} в аниматике">▶</button>
         <button class="icon-btn chk" aria-pressed="${isDone}" aria-label="Отметить ${s.id} как снятый" title="Отметить как снятый">✓</button>
       </div>
       <div class="cbody">
-        <figure><img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">${state.arrows?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
+        <figure><img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">${state.arrows&&!hid[s.id]?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
         <dl class="fields">
           ${field("","Локация",s.loc)}
           ${field("vo","Голос",s.vo)}
@@ -498,7 +502,9 @@ function play(){const total=timeline().at(-1).end;if(P.t>=total-.01)P.t=0;P.play
 function pause(){P.playing=false;$("play").textContent="▶ Смотреть"}
 $("play").onclick=()=>P.playing?pause():play();
 $("restart").onclick=()=>{P.t=0;P.cur=null;drawFrame();play()};
-$("tog-arrows").onclick=()=>{state.arrows=!state.arrows;$("tog-arrows").textContent="Стрелки: "+(state.arrows?"вкл":"выкл");$("tog-arrows").setAttribute("aria-pressed",state.arrows);render();drawFrame()};
+function setArrows(on){state.arrows=on;hid={};["tog-arrows","tog-arrows-all"].forEach(id=>{$(id).setAttribute("aria-pressed",on)});$("tog-arrows").textContent="Стрелки: "+(on?"вкл":"выкл");$("tog-arrows-all").textContent="↗ Стрелки: "+(on?"вкл":"выкл");render();drawFrame()}
+$("tog-arrows").onclick=()=>setArrows(!state.arrows);
+$("tog-arrows-all").onclick=()=>setArrows(!state.arrows);
 $("strip").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const s=timeline().find(x=>x.id===b.dataset.id);P.t=s.start;P.cur=null;drawFrame()});
 
 $("v15").onclick=()=>{state.v="15";P.t=0;P.cur=null;pause();render()};
@@ -508,6 +514,7 @@ $("q").addEventListener("input",e=>{state.q=e.target.value;render()});
 $("list").addEventListener("click",e=>{
   const card=e.target.closest(".card");if(!card)return;const id=card.dataset.id;
   if(e.target.closest(".chk")){done[id]=!done[id];try{localStorage.setItem("gk-done",JSON.stringify(done))}catch(err){}render();return}
+  if(e.target.closest(".arr")){if(!state.arrows){state.arrows=true;hid=Object.fromEntries(SHOTS.map(x=>[x.id,true]));$("tog-arrows-all").textContent="↗ Стрелки: вкл";$("tog-arrows-all").setAttribute("aria-pressed",true)}hid[id]=!hid[id];render();return}
   if(e.target.closest(".jump")){const s=timeline().find(x=>x.id===id);P.t=s.start;P.cur=null;drawFrame();$("stage").scrollIntoView({behavior:"smooth",block:"center"});play()}
 });
 [["b-intro","p-intro"],["b-hero","p-hero"],["b-timing","p-timing"]].forEach(([b,p])=>{
