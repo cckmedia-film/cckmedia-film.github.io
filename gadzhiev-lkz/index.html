@@ -82,6 +82,7 @@ table.tc th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-t
 .anim-head .hint{font-size:13px;color:var(--muted)}
 .stage{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--stage);border-radius:14px;overflow:hidden}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;will-change:transform}
+.stage .camlabel{display:none}
 .stage svg.arrows{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hud{position:absolute;left:0;right:0;top:0;display:flex;gap:8px;align-items:center;padding:10px 12px;font:600 12px var(--f-mono);color:var(--on-stage);background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))}
 .hud .tag{font-weight:400}
@@ -388,7 +389,7 @@ function arrowSVG(s){
     <marker id="ho" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--arrow-obj)"/></marker>
     <marker id="hc" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--arrow-cam)"/></marker></defs>`;
   const line=(x1,y1,x2,y2,c,m,dash)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="1.6" stroke-linecap="round" ${dash?'stroke-dasharray="3 2"':""} marker-end="url(#${m})"/>`;
-  const label=(x,y,t,c)=>t?`<text x="${x}" y="${y}" fill="${c}" font-size="4.2" font-family="JetBrains Mono,monospace" font-weight="600" paint-order="stroke" stroke="rgba(0,0,0,.75)" stroke-width="1.2">${esc(t)}</text>`:"";
+  const label=(x,y,t,c,cls="")=>t?`<text class="${cls}" x="${x}" y="${y}" fill="${c}" font-size="4.2" font-family="JetBrains Mono,monospace" font-weight="600" paint-order="stroke" stroke="rgba(0,0,0,.75)" stroke-width="1.2">${esc(t)}</text>`:"";
   const C="var(--arrow-cam)",O="var(--arrow-obj)";
   switch(s.cam){
     case "push": [[14,12,30,24],[146,12,130,24],[14,78,30,66],[146,78,130,66]].forEach(a=>out+=line(...a,C,"hc",1));break;
@@ -399,7 +400,7 @@ function arrowSVG(s){
     case "tiltD": out+=line(152,20,152,70,C,"hc",1);break;
     case "drone": out+=`<path d="M128 14 A16 16 0 0 1 146 30" fill="none" stroke="${C}" stroke-width="1.6" stroke-dasharray="3 2" marker-end="url(#hc)"/>`;break;
   }
-  out+=label(4,8,"КАМЕРА: "+CAM_NAME[s.cam],C);
+  out+=label(4,8,"КАМЕРА: "+CAM_NAME[s.cam],C,"camlabel");
   (s.arrows||[]).forEach(a=>{if(a[0]===a[2]&&a[1]===a[3])return;out+=line(X(a[0]),Y(a[1]),X(a[2]),Y(a[3]),O,"ho");
     const lx=Math.min(X(a[2])+2,120),ly=Math.max(Y(a[3])-2,14);out+=label(lx,ly,a[4],O)});
   return out;
