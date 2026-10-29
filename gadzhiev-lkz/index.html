@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Раскадровка «Враг в очках» · CCK Media</title>
+<title>Раскадровка ЛКЗ · клиника Гаджиева · CCK Media</title>
 <meta name="description" content="Сценарий, аниматик и раскадровка рекламного ролика лазерной коррекции зрения для глазной клиники доктора Гаджиева. 15 с для ТВ и 30 с для сайта.">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="theme-color" content="#110e1f">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CCK Media">
-<meta property="og:title" content="Раскадровка «Враг в очках»">
-<meta property="og:description" content="Лазерная коррекция зрения за 15 000 ₽ · сценарий, аниматик и раскадровка · 15 и 30 секунд">
+<meta property="og:title" content="Раскадровка: лазерная коррекция зрения · 2 варианта">
+<meta property="og:description" content="Лазерная коррекция зрения за 15 000 ₽ · два варианта сценария, аниматики и раскадровка · 15 и 30 секунд">
 <meta property="og:image" content="https://cckmedia-film.github.io/gadzhiev-lkz/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -58,6 +58,12 @@ h2{font-family:var(--f-display);font-weight:500;font-size:18px;margin:0}
 .meta{font-family:var(--f-mono);font-size:13px;color:var(--muted);display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .meta b{color:var(--fg)}
 .lead{color:var(--muted);max-width:60ch;margin:14px auto 0}
+.vers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:640px;margin:20px auto 0}
+.vers button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:14px;padding:12px 14px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:3px}
+.vers button b{font:500 14px var(--f-display)}
+.vers button span{font-size:13px;color:var(--muted)}
+.vers button[aria-pressed="true"]{border-color:var(--violet);box-shadow:0 0 0 2px var(--violet) inset}
+@media (max-width:560px){.vers{grid-template-columns:1fr}}
 .pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 .pill,.btn{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 16px;font:500 14px var(--f-body);cursor:pointer}
 .pill[aria-expanded="true"]{border-color:var(--violet);color:var(--violet)}
@@ -167,9 +173,13 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
 
 <header class="hero wrap">
   <div class="eyebrow">Глазная клиника доктора Гаджиева · сценарий и раскадровка</div>
-  <h1>Лазерная коррекция зрения за&nbsp;15&nbsp;000&nbsp;₽: «Враг в очках»</h1>
+  <h1>Лазерная коррекция зрения за&nbsp;15&nbsp;000&nbsp;₽: <span id="h-name">«Враг в очках»</span></h1>
   <div class="meta"><span>⏱ <b id="m-dur">0:15</b></span><span><b id="m-scenes">8</b> сцен</span><span>формат <b>16:9</b></span><span>ТВ · сайт · соцсети</span></div>
-  <p class="lead">Будущий ролик сцена за сценой. Основная версия 15 секунд. Версия 30 секунд для сайта — это те же кадры плюс вставки, без перестановок. Сначала прочитайте сценарий, дальше идут кадры с описаниями, а в самом конце — аниматик.</p>
+  <div class="vers" role="group" aria-label="Вариант сценария">
+    <button data-ver="A" aria-pressed="true"><b>Вариант A · «Враг в очках»</b><span>Экшен с иронией: курьер против своих очков</span></button>
+    <button data-ver="B" aria-pressed="false"><b>Вариант B · «Жест»</b><span>Спокойная история: одно движение, склеенное по жесту</span></button>
+  </div>
+  <p class="lead">Два варианта ролика на выбор. Основная версия 15 секунд. Версия 30 секунд для сайта — это те же кадры плюс вставки, без перестановок. Сначала прочитайте сценарий, дальше идут кадры с описаниями, а в самом конце — аниматик.</p>
   <div class="pills">
     <button class="pill" id="b-intro" aria-expanded="false" aria-controls="p-intro">▸ Вводные</button>
     <button class="pill" id="b-hero" aria-expanded="false" aria-controls="p-hero">▸ Герой</button>
@@ -177,7 +187,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </div>
   <section class="panel" id="p-intro" hidden>
     <h3>Идея</h3>
-    <p>Вечер городского курьера снят как трейлер боевика. Главный злодей здесь — его собственные очки: запотевают, сползают, не дают прочитать номер дома. После коррекции та же «погоня» проходится легко. Финальная точка — фантомный жест: рука тянется поправить очки, а их нет.</p>
+    <p id="idea">Вечер городского курьера снят как трейлер боевика. Главный злодей здесь — его собственные очки: запотевают, сползают, не дают прочитать номер дома. После коррекции та же «погоня» проходится легко. Финальная точка — фантомный жест: рука тянется поправить очки, а их нет.</p>
     <h3>Как 15 превращаются в 30</h3>
     <ul>
       <li>Кадры S1–S8 — «хребет»: монтируются сами по себе, это и есть версия на 15 секунд.</li>
@@ -256,8 +266,8 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
     <button class="btn primary" id="play">▶ Смотреть</button>
     <button class="btn" id="restart">↺ С начала</button>
     <button class="btn" id="tog-arrows" aria-pressed="true">Стрелки: вкл</button>
-    <a class="btn" href="video/animatic_15s.mp4" download>⬇ Аниматик 15 с</a>
-    <a class="btn" href="video/animatic_30s.mp4" download>⬇ Аниматик 30 с</a>
+    <a class="btn" id="dl15" href="video/animatic_15s.mp4" download>⬇ Аниматик 15 с</a>
+    <a class="btn" id="dl30" href="video/animatic_30s.mp4" download>⬇ Аниматик 30 с</a>
     <span class="time" id="st-time">0:00.0 / 0:15.0</span>
   </div>
   <div class="strip" id="strip" aria-label="Кадры по времени"></div>
@@ -268,7 +278,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
 <script>
 /* cam: push | pull | panR | panL | tiltU | tiltD | drone | static
    arrows: [x1,y1,x2,y2,label] in % of frame */
-const SHOTS=[
+const SHOTS_A=[
  {id:"S1",spine:true,dur:1.2,type:"ai",img:"S1",loc:"Ночной город, лужа (ИИ)",
   cam:"static",move:"Камера статична у асфальта, рапид. Колесо влетает в лужу, брызги летят прямо в объектив.",
   arrows:[[14,46,34,70,"колесо в лужу"],[40,74,62,94,"брызги в объектив"]],
@@ -354,7 +364,7 @@ const SHOTS=[
 const CAM_NAME={push:"наезд",pull:"отъезд",panR:"панорама вправо",panL:"панорама влево",tiltU:"вверх",tiltD:"опуск",drone:"дрон, поворот",static:"статика"};
 
 /* screenplay text, per shot; inserts only shown in 30 s */
-const SCRIPT={
+const SCRIPT_A={
  S1:["НАТ. НОЧНОЙ ГОРОД — УЛИЦА","Мокрый асфальт отражает фиолетовые и зелёные вывески. Колесо курьерского велосипеда на полной скорости влетает в лужу. Брызги в рапиде летят прямо на нас."],
  S2:["","АРТЁМ (22), капюшон, термокороб за спиной, мчится сквозь ночь. Очки в каплях дождя. Взгляд как у героя боевика."],
  "+A":["","Сверху: одинокий курьер прорезает неоновую улицу, оставляя за собой световые следы."],
@@ -373,6 +383,110 @@ const SCRIPT={
  S8:["НАТ. НОЧНОЙ ГОРОД / ПЭКШОТ","Артём уверенно уезжает вглубь резкого ночного города. Проявляется фирменный экран клиники. Титр: «Лазерная коррекция зрения — 15 000 ₽»."]
 };
 
+
+const SHOTS_B=[
+ {id:"B1",spine:true,dur:1.5,type:"ai",img:"B1",loc:"Аудитория, утро (ИИ)",vo:"Сколько раз в день ты это делаешь?",
+  cam:"static",move:"Статика. Одна композиция для B1–B4: палец снизу поднимается к переносице и поправляет очки.",
+  arrows:[[50,98,50,42,"жест: поправить очки"]],
+  video:"Лекционная аудитория. Артём щурится на доску и поправляет очки указательным пальцем.",
+  lens:"Средне-крупный, лицо по центру, 50 мм, на уровне глаз",sound:"Шорох конспекта",cut:"Стык по жесту: палец в той же точке, меняется мир"},
+ {id:"+a",spine:false,dur:1.9,type:"ai",img:"Ba",loc:"Общага, ночь (ИИ)",
+  cam:"static",move:"Та же композиция. Свет ноутбука в линзах, тот же жест.",
+  arrows:[[50,98,50,42,"тот же жест"]],
+  video:"Ночь, ноутбук. Холодный свет экрана в линзах, Артём щурится и поправляет очки.",
+  lens:"Средне-крупный, по центру, 50 мм",sound:"Щелчки клавиатуры",cut:"По жесту"},
+ {id:"B2",spine:true,dur:1.2,type:"ai",img:"B2",loc:"Кафе, день (ИИ)",
+  cam:"static",move:"Та же точка камеры. Поднос в руке, жест повторяется.",
+  arrows:[[50,98,50,40,"тот же жест"]],
+  video:"Кафе. Артём-официант с подносом, пар от кофе, тот же жест.",
+  lens:"Средне-крупный, по центру, 50 мм",sound:"Звон посуды",cut:"По жесту"},
+ {id:"+b",spine:false,dur:1.9,type:"ai",img:"Bb",loc:"Кафе (ИИ)",vo:"Даже когда руки заняты.",
+  cam:"static",move:"Статика. Очки сползают, он морщит нос и запрокидывает голову: руки заняты подносом.",
+  arrows:[[57,30,57,42,"очки сползают"]],
+  video:"Руки заняты подносом, очки сползают на кончик носа, он морщит нос, пытаясь их удержать.",
+  lens:"Средний, 50 мм",sound:"Звон посуды",cut:"Морщит нос → мороз"},
+ {id:"B3",spine:true,dur:1.2,type:"ai",img:"B3",loc:"Мороз у двери (ИИ)",
+  cam:"static",move:"Та же композиция. Очки белые от пара, тот же жест.",
+  arrows:[[50,98,50,42,"тот же жест"]],
+  video:"Мороз у двери, очки запотели белым, тот же жест.",
+  lens:"Средне-крупный, по центру, 50 мм",sound:"Скрип снега",cut:"По жесту"},
+ {id:"+c",spine:false,dur:1.9,type:"ai",img:"Bc",loc:"Мороз (ИИ)",
+  cam:"push",move:"Лёгкий наезд. Снял очки и протирает запотевшие линзы рукавом.",
+  arrows:[[66,72,80,62,"протирает рукавом"]],
+  video:"Снял запотевшие очки, протирает их рукавом куртки, щурится без них.",
+  lens:"Крупный, 50 мм",sound:"Скрип ткани по стеклу",cut:"Протирает → линзы"},
+ {id:"+d",spine:false,dur:1.9,type:"live",img:"Bd",loc:"Клиника, кабинет подбора линз",vo:"Линзы? Дорого. И песок в глазах.",
+  cam:"static",move:"Статика. Пробует линзу у зеркала, трёт красный глаз.",
+  arrows:[[44,48,46,38,"трёт глаз"]],
+  video:"Кабинет подбора линз: Артём пробует контактную линзу у зеркала, моргает, трёт красный глаз.",
+  lens:"Средне-крупный, 35 мм",sound:"Тишина, моргание",cut:"Глаз → дождь"},
+ {id:"B4",spine:true,dur:1.3,type:"ai",img:"B4",loc:"Ночь, дождь (ИИ)",vo:"Сто? Двести?",
+  cam:"static",move:"Та же композиция, лёгкая тряска. Жест резкий, раздражённый.",
+  arrows:[[50,98,50,40,"жест резче"]],
+  video:"Ночь, дождь, курьер. Неон, капли на линзах, жест резче и раздражённее.",
+  lens:"Средне-крупный, по центру, 50 мм",sound:"Дождь",cut:"Ночь → белая тишина клиники"},
+ {id:"+e",spine:false,dur:1.9,type:"live",img:"pD",loc:"Клиника, зона ожидания",
+  cam:"static",move:"Статика. Протирает очки краем худи.",
+  arrows:[[30,80,44,60,"протирает худи"]],
+  video:"Зона ожидания клиники: Артём протирает очки краем худи. Кадр общий с вариантом A.",
+  lens:"Деталь рук → крупный",sound:"Скрип стекла",cut:"По жесту → кабинет"},
+ {id:"B5",spine:true,dur:1.3,type:"live",img:"S4",loc:"Клиника, кабинет диагностики",vo:"Лазерная коррекция зрения…",
+  cam:"panR",move:"Проезд гимбала вправо. Врач поворачивается к пациенту.",
+  arrows:[[10,46,22,44,"врач поворачивается"]],
+  video:"Светлый кабинет с новым оборудованием, врач поворачивается к пациенту. Кадр общий с вариантом A.",
+  lens:"Общий/средний, гимбал",sound:"Тишина, чистый воздух",cut:"Общий → детали"},
+ {id:"+f",spine:false,dur:1.9,type:"live",img:"pF",loc:"Клиника, операционная",
+  cam:"panR",move:"Медленный проезд вправо вдоль оборудования.",arrows:[],
+  video:"Проезд по операционной и новому оборудованию. Без самой операции.",
+  lens:"Проезд гимбала, 35 мм",sound:"Гул техники",cut:"Оборудование → детали"},
+ {id:"B6",spine:true,dur:1.5,type:"live",img:"S5",loc:"Клиника, кабинет диагностики",vo:"…в клинике доктора Гаджиева.",
+  cam:"push",move:"Три детали по 0,5 с, лёгкий наезд. Линза прибора и зрачок стыкуются по форме круга.",arrows:[],
+  video:"Детали: линза прибора ↔ зрачок, руки врача на джойстике, экран с картой глаза.",
+  lens:"Макро, детали",sound:"Щелчки аппаратуры",cut:"Зрачок → герой без очков"},
+ {id:"+g",spine:false,dur:1.9,type:"live",img:"pG",loc:"Клиника, кабинет",vo:"Диагностика, современное оборудование, опытные врачи.",
+  cam:"static",move:"Через плечо, статика. Врач жестом показывает на экран.",
+  arrows:[[56,62,40,58,"жест к экрану"],[80,40,74,44,"наклоняется"]],
+  video:"Врач показывает Артёму карту его глаза на экране.",
+  lens:"Средний через плечо",sound:"Мягкий синт",cut:"Экран → последний жест"},
+ {id:"B7",spine:true,dur:2.5,type:"live",img:"S7",loc:"Клиника, кабинет",
+  cam:"static",move:"Полная статика в композиции B1–B4. Рука тянется к переносице и замирает.",
+  arrows:[[50,98,50,46,"рука к переносице"]],
+  video:"Последний жест. Артём встаёт, рука по привычке тянется к переносице и замирает: очков нет. Еле заметная улыбка.",
+  lens:"Средне-крупный, по центру, как B1–B4",sound:"Тишина",cut:"Неудавшийся жест → спокойствие"},
+ {id:"+h",spine:false,dur:1.9,type:"ai",img:"Bh",loc:"Кафе (ИИ)",
+  cam:"static",move:"Та же композиция, что B2. Несёт поднос свободно и улыбается гостю.",
+  arrows:[[34,84,66,84,"несёт поднос"]],
+  video:"Кафе, та же композиция, что B2: Артём без очков свободно несёт поднос и улыбается гостю.",
+  lens:"Средне-крупный, по центру, 50 мм",sound:"Музыка раскрывается",cut:"Кафе → аудитория"},
+ {id:"B8",spine:true,dur:4.5,dur30:4.3,type:"ai",img:"B8",loc:"Аудитория (ИИ) + графика",vo:"Поправь очки в последний раз. Всего 15 000 рублей.",
+  cam:"pull",move:"Отъезд от спокойного Артёма. Слева проявляются логотип и цена.",arrows:[],
+  video:"1,5 с: та же аудитория, что в B1. Артём без очков, руки спокойно лежат на столе. Затем фирменный шаблон: логотип «глаз-компас».",
+  lens:"Средне-крупный → графика",sound:"Финальный аккорд",
+  title:"Лазерная коррекция зрения — 15 000 ₽ · ☎ 97-99-09 · ул. Доваторцев 86/1, 86/2",cut:"—"}
+];
+const SCRIPT_B={
+ B1:["ИНТ. УНИВЕРСИТЕТ — АУДИТОРИЯ — УТРО","АРТЁМ (22) за партой щурится на доску и привычным движением поправляет очки на переносице."],
+ "+a":["ИНТ. ОБЩАГА — НОЧЬ","Свет ноутбука в линзах. Тот же жест."],
+ B2:["ИНТ. КАФЕ — ДЕНЬ","Артём-официант с подносом. Пар от кофе. Тот же жест."],
+ "+b":["","Руки заняты подносом, очки ползут вниз. Он морщит нос, пытаясь их удержать."],
+ B3:["НАТ. У ДВЕРИ — ВЕЧЕР — МОРОЗ","Очки побелели от пара. Тот же жест."],
+ "+c":["","Он снимает очки и протирает их рукавом, щурясь в сумерках."],
+ "+d":["ИНТ. КЛИНИКА — КАБИНЕТ ПОДБОРА ЛИНЗ","У зеркала Артём пробует контактную линзу. Моргает. Трёт покрасневший глаз."],
+ B4:["НАТ. НОЧНОЙ ГОРОД — ДОЖДЬ","Курьер под дождём, неон в каплях на линзах. Жест резкий, раздражённый."],
+ "+e":["ИНТ. КЛИНИКА — ЗОНА ОЖИДАНИЯ","Артём протирает очки краем худи."],
+ B5:["ИНТ. КЛИНИКА ДОКТОРА ГАДЖИЕВА — КАБИНЕТ","Белая тишина. Светлый кабинет с новым оборудованием. ВРАЧ поворачивается навстречу."],
+ "+f":["ИНТ. КЛИНИКА — ОПЕРАЦИОННАЯ","Тихий проезд вдоль оборудования."],
+ B6:["ИНТ. КЛИНИКА — КАБИНЕТ","Линза прибора. Зрачок того же размера. Руки врача. Цветная карта глаза."],
+ "+g":["","Врач показывает Артёму карту его глаза на экране."],
+ B7:["","Артём встаёт. Рука по привычке тянется к переносице и замирает на полпути: очков нет. Пауза. Еле заметная улыбка."],
+ "+h":["ИНТ. КАФЕ — ДЕНЬ","Та же точка, что утром в кафе. Артём без очков свободно несёт поднос и улыбается гостю."],
+ B8:["ИНТ. АУДИТОРИЯ / ПЭКШОТ","Та же аудитория, что в начале. Руки Артёма спокойно лежат на столе. Проявляется фирменный экран клиники. Титр: «Лазерная коррекция зрения — 15 000 ₽»."]
+};
+const META={
+ A:{name:"«Враг в очках»",idea:"Вечер городского курьера снят как трейлер боевика. Главный злодей здесь — его собственные очки: запотевают, сползают, не дают прочитать номер дома. После коррекции та же «погоня» проходится легко. Финальная точка — фантомный жест: рука тянется поправить очки, а их нет.",shots:SHOTS_A,script:SCRIPT_A},
+ B:{name:"«Жест»",idea:"Весь ролик держится на одном привычном движении — поправить очки на переносице. Артём делает его снова и снова: на лекции, с подносом в кафе, на морозе, под дождём. Кадры склеены по жесту: палец в одной точке экрана, а мир вокруг меняется. Потом клиника. В финале рука по привычке тянется к переносице, а очков нет. Спокойная, почти бессловесная история.",shots:SHOTS_B,script:SCRIPT_B}
+};
+let VER="A",SHOTS=SHOTS_A,SCRIPT=SCRIPT_A;
 const state={v:"15",f:"all",q:"",arrows:true};
 let hid={};
 let done={};
@@ -430,7 +544,7 @@ function render(){
   const q=state.q.trim().toLowerCase();
   const vis=tl.filter(s=>(state.f==="all"||s.type===state.f)&&(!q||[s.id,s.loc,s.vo,s.video,s.move,s.lens,s.sound,s.title,s.cut].join(" ").toLowerCase().includes(q)));
   document.getElementById("list").innerHTML=`<div class="count">Блоков: ${vis.length}</div>`+(vis.length?vis.map(s=>{
-    const isDone=!!done[s.id];
+    const isDone=!!done[VER+s.id];
     return `<article class="card${s.spine?"":" insert"}${isDone?" done":""}" data-id="${s.id}">
       <div class="chead">
         <span class="num">${s.id}</span>
@@ -457,7 +571,7 @@ function render(){
           ${field("","Стык",s.cut)}
         </dl>
       </div></article>`}).join(""):'<div class="empty">Ничего не нашлось. Попробуйте другое слово.</div>');
-  const total=tl.length,dn=tl.filter(s=>done[s.id]).length;
+  const total=tl.length,dn=tl.filter(s=>done[VER+s.id]).length;
   document.getElementById("p-done").textContent=dn;
   document.getElementById("p-total").textContent=total;
   document.getElementById("p-bar").style.width=(total?dn/total*100:0)+"%";
@@ -513,14 +627,22 @@ document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{state.f=b.datase
 $("q").addEventListener("input",e=>{state.q=e.target.value;render()});
 $("list").addEventListener("click",e=>{
   const card=e.target.closest(".card");if(!card)return;const id=card.dataset.id;
-  if(e.target.closest(".chk")){done[id]=!done[id];try{localStorage.setItem("gk-done",JSON.stringify(done))}catch(err){}render();return}
+  if(e.target.closest(".chk")){done[VER+id]=!done[VER+id];try{localStorage.setItem("gk-done",JSON.stringify(done))}catch(err){}render();return}
   if(e.target.closest(".arr")){if(!state.arrows){state.arrows=true;hid=Object.fromEntries(SHOTS.map(x=>[x.id,true]));$("tog-arrows-all").textContent="↗ Стрелки: вкл";$("tog-arrows-all").setAttribute("aria-pressed",true)}hid[id]=!hid[id];render();return}
   if(e.target.closest(".jump")){const s=timeline().find(x=>x.id===id);P.t=s.start;P.cur=null;drawFrame();$("stage").scrollIntoView({behavior:"smooth",block:"center"});play()}
 });
 [["b-intro","p-intro"],["b-hero","p-hero"],["b-timing","p-timing"]].forEach(([b,p])=>{
   const btn=$(b),pan=$(p);btn.onclick=()=>{const open=pan.hidden;pan.hidden=!open;btn.setAttribute("aria-expanded",open)};
 });
-render();
+function setVer(v,push){if(!META[v])v="A";VER=v;SHOTS=META[v].shots;SCRIPT=META[v].script;hid={};
+  $("h-name").textContent=META[v].name;$("idea").textContent=META[v].idea;
+  document.querySelectorAll("[data-ver]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ver===v));
+  const d15=document.getElementById("dl15"),d30=document.getElementById("dl30");
+  if(d15){d15.href=v==="A"?"video/animatic_15s.mp4":"video/animatic_B_15s.mp4";d30.href=v==="A"?"video/animatic_30s.mp4":"video/animatic_B_30s.mp4"}
+  if(push){try{history.replaceState(null,"","#"+v.toLowerCase())}catch(e){}}
+  P.t=0;P.cur=null;pause();render()}
+document.querySelectorAll("[data-ver]").forEach(b=>b.onclick=()=>setVer(b.dataset.ver,true));
+setVer((location.hash||"").replace("#","").toUpperCase()==="B"?"B":"A",false);
 </script>
 </body>
 </html>
