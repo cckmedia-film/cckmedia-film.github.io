@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Раскадровка «Враг в очках» · CCK Media</title>
+<meta name="description" content="Сценарий, аниматик и раскадровка рекламного ролика лазерной коррекции зрения для глазной клиники доктора Гаджиева. 15 с для ТВ и 30 с для сайта.">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#110e1f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CCK Media">
+<meta property="og:title" content="Раскадровка «Враг в очках»">
+<meta property="og:description" content="Лазерная коррекция зрения за 15 000 ₽ · сценарий, аниматик и раскадровка · 15 и 30 секунд">
+<meta property="og:image" content="https://cckmedia-film.github.io/gadzhiev-lkz/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://cckmedia-film.github.io/gadzhiev-lkz/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23110e1f'/%3E%3Crect x='10' y='18' width='44' height='28' rx='4' fill='none' stroke='%23a28bff' stroke-width='4'/%3E%3Cpath d='M28 25v14l12-7z' fill='%233fd6a0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+.topnav{font:12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding-block:16px 0}
+.topnav a{color:var(--muted);text-decoration:none}
+.topnav a:hover{color:var(--violet)}
+a.btn{text-decoration:none;display:inline-block}
+
+/* Layout: one narrow reading column — animatic player, script, then scene cards; sticky control bar; brand violet + emerald from the clinic packshot */
+:root{
+  --bg:#f5f4f9; --surface:#ffffff; --fg:#1b1730; --muted:#5f5a78; --line:#e2dfee;
+  --violet:#4b2fb3; --violet-soft:#ece8fb; --emerald:#0f9d6e;
+  --ai:#4b2fb3; --ai-soft:#ece8fb; --live:#0f7f5a; --live-soft:#e2f5ee;
+  --stage:#0c0a16; --arrow-obj:#ff3b3b; --arrow-cam:#ffd23f; --on-stage:#ffffff;
+  --f-display:"Unbounded","Manrope",system-ui,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#110e1f; --surface:#1a1630; --fg:#ece9f7; --muted:#a39dc2; --line:#2d2850;
+  --violet:#a28bff; --violet-soft:#2a2350; --emerald:#3fd6a0;
+  --ai:#a28bff; --ai-soft:#2a2350; --live:#3fd6a0; --live-soft:#12322a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#110e1f; --surface:#1a1630; --fg:#ece9f7; --muted:#a39dc2; --line:#2d2850;
+  --violet:#a28bff; --violet-soft:#2a2350; --emerald:#3fd6a0;
+  --ai:#a28bff; --ai-soft:#2a2350; --live:#3fd6a0; --live-soft:#12322a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.hero{padding-block:44px 24px;text-align:center}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,5vw,42px);line-height:1.12;margin:12px 0 14px;text-wrap:balance}
+h2{font-family:var(--f-display);font-weight:500;font-size:18px;margin:0}
+.meta{font-family:var(--f-mono);font-size:13px;color:var(--muted);display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.meta b{color:var(--fg)}
+.lead{color:var(--muted);max-width:60ch;margin:14px auto 0}
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.pill,.btn{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 16px;font:500 14px var(--f-body);cursor:pointer}
+.pill[aria-expanded="true"]{border-color:var(--violet);color:var(--violet)}
+.btn.primary{background:var(--violet);border-color:var(--violet);color:var(--surface)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0 0;text-align:left}
+.panel h3{font-family:var(--f-display);font-size:15px;font-weight:500;margin:18px 0 6px}
+.panel h3:first-child{margin-top:0}
+.panel p,.panel li{margin:4px 0}
+.panel ul{padding-left:20px;margin:4px 0}
+.charrow{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:start}
+.charrow img{border-radius:10px;width:100%;display:block}
+@media (max-width:640px){.charrow{grid-template-columns:1fr}}
+table.tc{width:100%;border-collapse:collapse;font-size:14px}
+table.tc td,table.tc th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.tc th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.tcwrap{overflow-x:auto}
+
+/* animatic */
+.anim{padding-block:8px 24px}
+.anim-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.anim-head .hint{font-size:13px;color:var(--muted)}
+.stage{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--stage);border-radius:14px;overflow:hidden}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;will-change:transform}
+.stage svg.arrows{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hud{position:absolute;left:0;right:0;top:0;display:flex;gap:8px;align-items:center;padding:10px 12px;font:600 12px var(--f-mono);color:var(--on-stage);background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,0))}
+.hud .tag{font-weight:400}
+.sub{position:absolute;left:8%;right:8%;bottom:7%;text-align:center;color:var(--on-stage);font:italic 500 clamp(13px,2.2vw,20px)/1.35 var(--f-body);text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.ctrl .time{font:13px var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.strip{display:flex;gap:3px;margin-top:10px;height:34px}
+.strip button{flex:var(--d) 1 0;min-width:0;border:0;border-radius:4px;cursor:pointer;font:10px var(--f-mono);color:var(--surface);padding:0;overflow:hidden;white-space:nowrap}
+.strip button.ai{background:var(--ai)}
+.strip button.live{background:var(--live)}
+.strip button.cur{outline:2px solid var(--fg);outline-offset:1px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:8px}
+.legend span::before{content:"";display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle;background:var(--c)}
+.legend .cam::before{background:repeating-linear-gradient(90deg,var(--arrow-cam) 0 5px,transparent 5px 8px)}
+
+/* sticky bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-block:1px solid var(--line)}
+.bar .wrap{padding-block:12px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;background:var(--bg);flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:var(--muted);font:500 13px var(--f-mono);padding:7px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--violet);color:var(--surface)}
+.progress{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:13px;color:var(--muted);flex:1;min-width:200px}
+.progress b{color:var(--fg)}
+.track{flex:1;height:6px;background:var(--line);border-radius:999px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--emerald);width:0;transition:width .3s}
+.search{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:12px;padding:11px 14px;font:15px var(--f-body)}
+
+/* script */
+details.script{background:var(--surface);border:1px solid var(--line);border-radius:16px}
+details.script summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:center;gap:12px}
+details.script summary::-webkit-details-marker{display:none}
+details.script summary .chev{transition:transform .2s;color:var(--violet);font-size:14px}
+details.script[open] summary .chev{transform:rotate(90deg)}
+details.script summary small{color:var(--muted);font:12px var(--f-mono);margin-left:auto}
+.screen{padding:4px 24px 24px;max-width:68ch;margin:0 auto;font-size:15.5px}
+.screen .scene{font:600 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--violet);margin:22px 0 6px}
+.screen p{margin:6px 0}
+.screen .vo{margin:8px 0 8px 2.2em;font-style:italic}
+.screen .vo b{font-style:normal;font:600 11px var(--f-mono);letter-spacing:.08em;color:var(--muted);display:block}
+.screen .ins{border-left:2px dashed var(--muted);padding-left:12px}
+.screen .ins-note{font:11px var(--f-mono);color:var(--muted)}
+
+/* cards */
+main{padding-block:20px 60px;display:flex;flex-direction:column;gap:16px}
+.count{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card.done{border-color:var(--emerald)}
+.card.insert{border-style:dashed}
+.chead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--line)}
+.num{font-family:var(--f-display);font-weight:700;font-size:17px;min-width:2.4em}
+.tc-badge{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
+.tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;padding:3px 9px;border-radius:999px}
+.tag.ai{background:var(--ai-soft);color:var(--ai)}
+.tag.live{background:var(--live-soft);color:var(--live)}
+.tag.ins{border:1px dashed var(--muted);color:var(--muted)}
+.tag.done{background:var(--emerald);color:var(--surface)}
+.dur{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.sp{flex:1}
+.icon-btn{border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:10px;height:36px;min-width:36px;padding:0 10px;font:13px var(--f-mono);cursor:pointer;display:grid;place-items:center}
+.card.done .chk{background:var(--emerald);border-color:var(--emerald);color:var(--surface)}
+.cbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.cbody figure{margin:0;background:var(--stage);position:relative;align-self:start}
+.cbody figure img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.cbody figure svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.fields{padding:14px 18px;display:flex;flex-direction:column;gap:9px;min-width:0;margin:0}
+.f{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:10px;font-size:14px}
+.f dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.f dd{margin:0}
+.f.vo dd{font-style:italic;font-size:15px}
+.f.title dd{color:var(--violet);font-weight:700}
+.f.move dd{font-weight:500}
+@media (max-width:720px){.cbody{grid-template-columns:1fr}}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+footer{color:var(--muted);font-size:13px;padding-block:0 40px}
+@media (prefers-reduced-motion:reduce){.track i,details.script summary .chev{transition:none}}
+</style>
+</head>
+<body>
+<nav class="wrap topnav"><a href="/">CCK Media · film</a></nav>
+
+<header class="hero wrap">
+  <div class="eyebrow">Глазная клиника доктора Гаджиева · сценарий и раскадровка</div>
+  <h1>Лазерная коррекция зрения за&nbsp;15&nbsp;000&nbsp;₽: «Враг в очках»</h1>
+  <div class="meta"><span>⏱ <b id="m-dur">0:15</b></span><span><b id="m-scenes">8</b> сцен</span><span>формат <b>16:9</b></span><span>ТВ · сайт · соцсети</span></div>
+  <p class="lead">Будущий ролик сцена за сценой. Основная версия 15 секунд. Версия 30 секунд для сайта — это те же кадры плюс вставки, без перестановок. Сначала посмотрите аниматик, потом прочитайте сценарий, дальше идут кадры с описаниями.</p>
+  <div class="pills">
+    <button class="pill" id="b-intro" aria-expanded="false" aria-controls="p-intro">▸ Вводные</button>
+    <button class="pill" id="b-hero" aria-expanded="false" aria-controls="p-hero">▸ Герой</button>
+    <button class="pill" id="b-timing" aria-expanded="false" aria-controls="p-timing">🕐 Тайминг</button>
+  </div>
+  <section class="panel" id="p-intro" hidden>
+    <h3>Идея</h3>
+    <p>Вечер городского курьера снят как трейлер боевика. Главный злодей здесь — его собственные очки: запотевают, сползают, не дают прочитать номер дома. После коррекции та же «погоня» проходится легко. Финальная точка — фантомный жест: рука тянется поправить очки, а их нет.</p>
+    <h3>Как 15 превращаются в 30</h3>
+    <ul>
+      <li>Кадры S1–S8 — «хребет»: монтируются сами по себе, это и есть версия на 15 секунд.</li>
+      <li>Вставки +A…+H стоят между ними по 1,9 с, ровно один такт при 125 BPM. Удаляем вставки, и все стыки хребта остаются рабочими.</li>
+      <li>Голос привязан к кадрам хребта, во вставках только добавочные реплики.</li>
+    </ul>
+    <h3>Съёмка и ИИ</h3>
+    <ul>
+      <li><b>Съёмка</b> — только внутри клиники: кабинеты, новое оборудование, врачи, герой в роли пациента.</li>
+      <li><b>ИИ (Seedance 2.5)</b> — всё за стенами клиники: ночной город, доставка, общага.</li>
+      <li>Около 50/50 в обеих версиях. Ночь красим в фирменный фиолетово-синий с зелёным неоном, клинику снимаем в белом дневном свете.</li>
+    </ul>
+    <h3>Обязательно в кадре</h3>
+    <ul>
+      <li>Плашка «Имеются противопоказания. Необходимо проконсультироваться со специалистом» на весь ролик (на ТВ не менее 5 с и не менее 7% кадра).</li>
+      <li>Пэкшот на фирменном шаблоне: логотип «глаз-компас», ☎ 97-99-09, г. Ставрополь, ул. Доваторцев 86/1, 86/2, «Медицинскую деятельность осуществляет ООО «Глазная клиника Юго-Запад»».</li>
+      <li>Условия акции и промокод «ТВ» уточнить у клиники.</li>
+    </ul>
+  </section>
+  <section class="panel" id="p-hero" hidden>
+    <div class="charrow">
+      <img src="img/char.jpg" alt="Лист персонажа Артёма: анфас, три четверти, профиль, полный рост">
+      <div>
+        <h3>Артём, 22 года</h3>
+        <p>Студент, подрабатывает курьером. Тёмное худи, курьерский термокороб, тонкие прямоугольные очки с потёртой оправой.</p>
+        <h3>Пластика</h3>
+        <p><b>До:</b> суетится, поправляет очки, щурится, протирает их краем худи.<br><b>После:</b> спокоен, с первого раза делает то, что раньше было подвигом.</p>
+        <h3>Сходство актёра и ИИ</h3>
+        <p>Это временный ИИ-образ. После кастинга делаем карту персонажа реального актёра (фото с трёх ракурсов в гриме и костюме) и перегенерируем по ней все ИИ-кадры, чтобы актёр и его нейросетевой двойник совпадали.</p>
+      </div>
+    </div>
+  </section>
+  <section class="panel" id="p-timing" hidden>
+    <div class="tcwrap"><table class="tc"><thead><tr><th>№</th><th>Время</th><th>Тип</th><th>Движение</th><th>Голос</th></tr></thead><tbody id="tc-body"></tbody></table></div>
+  </section>
+</header>
+
+<section class="anim wrap" aria-label="Аниматик">
+  <div class="anim-head">
+    <h2>Аниматик</h2>
+    <span class="hint">Кадры идут в реальном хронометраже, камера двигается так, как задумано. Стрелки показывают движение.</span>
+  </div>
+  <div class="stage" id="stage">
+    <img id="st-img" src="img/S1.jpg" alt="Текущий кадр аниматика">
+    <svg class="arrows" id="st-arrows" viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="hud"><span id="st-id">S1</span><span id="st-tc">0:00.0</span><span class="tag" id="st-type">ИИ</span><span id="st-move" style="font-weight:400;opacity:.9"></span></div>
+    <div class="sub" id="st-sub"></div>
+  </div>
+  <div class="ctrl">
+    <button class="btn primary" id="play">▶ Смотреть</button>
+    <button class="btn" id="restart">↺ С начала</button>
+    <button class="btn" id="tog-arrows" aria-pressed="true">Стрелки: вкл</button>
+    <a class="btn" href="video/animatic_15s.mp4" download>⬇ Аниматик 15 с</a>
+    <a class="btn" href="video/animatic_30s.mp4" download>⬇ Аниматик 30 с</a>
+    <span class="time" id="st-time">0:00.0 / 0:15.0</span>
+  </div>
+  <div class="strip" id="strip" aria-label="Кадры по времени"></div>
+  <div class="legend"><span style="--c:var(--arrow-obj)">движение объекта</span><span class="cam">движение камеры</span><span style="--c:var(--ai)">ИИ</span><span style="--c:var(--live)">съёмка в клинике</span></div>
+</section>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="row">
+      <div class="seg" role="group" aria-label="Версия ролика">
+        <button id="v15" aria-pressed="true">15 сек · ТВ</button>
+        <button id="v30" aria-pressed="false">30 сек · сайт</button>
+      </div>
+      <div class="seg" role="group" aria-label="Тип кадров">
+        <button data-f="all" aria-pressed="true">Все</button>
+        <button data-f="live" aria-pressed="false">Съёмка</button>
+        <button data-f="ai" aria-pressed="false">ИИ</button>
+      </div>
+      <div class="progress"><span>✓ <b id="p-done">0</b> из <b id="p-total">0</b> снято</span><div class="track"><i id="p-bar"></i></div></div>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Поиск по словам и фразам…" aria-label="Поиск по сценарию">
+  </div>
+</div>
+
+<main class="wrap">
+  <details class="script" id="script">
+    <summary><span class="chev">▶</span><h2>Сценарий текстом</h2><small id="script-ver">версия 15 с</small></summary>
+    <div class="screen" id="screen"></div>
+  </details>
+  <div id="list" style="display:flex;flex-direction:column;gap:16px"></div>
+</main>
+<footer class="wrap">CCK Media · cckmedia-film.github.io<br>Кадры раскадровки сгенерированы в Nano Banana 2 (Syntx), 16:9. Кадры с пометкой «Съёмка» — ориентир для оператора: в ролике они будут сняты вживую в клинике.</footer>
+
+<script>
+/* cam: push | pull | panR | panL | tiltU | tiltD | drone | static
+   arrows: [x1,y1,x2,y2,label] in % of frame */
+const SHOTS=[
+ {id:"S1",spine:true,dur:1.2,type:"ai",img:"S1",loc:"Ночной город, лужа (ИИ)",
+  cam:"static",move:"Камера статична у асфальта, рапид. Колесо влетает в лужу, брызги летят прямо в объектив.",
+  arrows:[[14,46,34,70,"колесо в лужу"],[40,74,62,94,"брызги в объектив"]],
+  video:"ХУК. Колесо курьерского электровелосипеда влетает в лужу, брызги летят в объектив, рапид. Неон фиолетовый и зелёный.",
+  lens:"Макро, ракурс от асфальта",sound:"Бас-удар, всплеск",cut:"Брызги закрывают объектив → лицо"},
+ {id:"S2",spine:true,dur:1.5,type:"ai",img:"S2",loc:"Ночной город (ИИ)",vo:"Он быстрее всех в городе…",
+  cam:"pull",move:"Камера едет перед героем и отъезжает с его скоростью. Огни города проносятся назад по краям кадра.",
+  arrows:[[26,30,6,30,"огни"],[74,30,94,30,"огни"]],
+  video:"Артём в капюшоне летит сквозь ночь, очки в каплях, неоновые блики в линзах, взгляд как у героя боевика.",
+  lens:"Крупный, чуть снизу, 50 мм, малая глубина резкости",sound:"Свист ветра, рост музыки",cut:"То же направление, другая крупность"},
+ {id:"+A",spine:false,dur:1.9,type:"ai",img:"pA",loc:"Ночной город, дрон (ИИ)",
+  cam:"drone",move:"Дрон висит строго сверху и медленно проворачивается. Курьер прорезает улицу слева направо.",
+  arrows:[[40,62,78,56,"курьер слева направо"]],
+  video:"Вид сверху: курьер прорезает неоновую улицу слева направо, световые следы, motion blur.",
+  lens:"Дрон, строго сверху",sound:"Свист, музыка нарастает",cut:"Движение слева направо сохраняется"},
+ {id:"+B",spine:false,dur:1.9,type:"ai",img:"pB",loc:"Улица у дома (ИИ)",vo:"Номер дома? Квартира? Удачи.",
+  cam:"static",move:"Камера = глаза героя, статика с лёгкой тряской. Палец снизу поправляет очки вверх, резкость не появляется.",
+  arrows:[[50,98,50,62,"палец поправляет очки"]],
+  video:"Взгляд героя сквозь мокрые очки: номер дома расплывается, палец входит в кадр и поправляет очки, но резче не становится.",
+  lens:"Субъективная камера, расфокус",sound:"Капли по стеклу",cut:"Через расфокус"},
+ {id:"+C",spine:false,dur:1.9,type:"ai",img:"pC",loc:"Общага, ночь (ИИ)",vo:"Линзы? Дорого. И песок в глазах.",
+  cam:"tiltD",move:"Камера сверху медленно опускается к столу. Рука героя трёт глаз.",
+  arrows:[[84,50,82,32,"трёт глаз"]],
+  video:"Стол в общаге: щелчок контейнера линз, капли, чек «4 990 ₽». Артём трёт красные глаза.",
+  lens:"Сверху, тёплая лампа + фиолетовый свет из окна",sound:"Щелчок контейнера, капля",cut:"Трёт глаза → дверь подъезда"},
+ {id:"S3",spine:true,dur:1.5,type:"ai",img:"S3",loc:"Тёплый подъезд (ИИ)",vo:"…но у него есть враг.",
+  cam:"push",move:"Быстрый наезд прямо в запотевшие линзы, пока белое не заполнит весь кадр.",
+  arrows:[],
+  video:"Входит с холода в тёплый подъезд, очки мгновенно белеют и заполняют кадр белым.",
+  lens:"Крупный → наезд в линзу",sound:"Шипение пара, музыка обрывается",cut:"Белые линзы → белый свет кабинета (главный переход)"},
+ {id:"+D",spine:false,dur:1.9,type:"live",img:"pD",loc:"Клиника, зона ожидания",
+  cam:"static",move:"Камера статична. Руки протирают очки краем худи и надевают обратно.",
+  arrows:[[30,80,44,60,"протирает худи"]],
+  video:"Артём протирает запотевшие очки краем худи, надевает, они снова сползают.",
+  lens:"Деталь рук → крупный, фон размыт",sound:"Скрип стекла",cut:"По жесту"},
+ {id:"+E",spine:false,dur:1.9,type:"live",img:"pE",loc:"Клиника, зона ожидания",vo:"Пора заканчивать.",
+  cam:"static",move:"Статика. Палец опускает очки на кончик носа, затем герой снимает их прямо через объектив.",
+  arrows:[[54,40,54,56,"очки на нос"],[62,58,62,98,"снимает через объектив"]],
+  video:"Артём опускает очки на кончик носа и с каменным лицом смотрит в камеру. Снимает их, линза проходит через объектив, белый засвет.",
+  lens:"Крупный, фронтально, статика",sound:"Пауза, тишина",cut:"Линза перекрывает объектив → белое"},
+ {id:"S4",spine:true,dur:1.3,type:"live",img:"S4",loc:"Клиника, кабинет диагностики",
+  cam:"panR",move:"Гимбал медленно проезжает вправо, кадр проявляется из белого. Врач поворачивается к пациенту.",
+  arrows:[[10,46,22,44,"врач поворачивается"]],
+  video:"Из белого проявляется светлый кабинет с новым оборудованием, врач поворачивается к пациенту.",
+  lens:"Общий/средний, гимбал",sound:"Чистый воздух, мягкий синт",cut:"Общий → детали того же аппарата"},
+ {id:"+F",spine:false,dur:1.9,type:"live",img:"pF",loc:"Клиника, операционная",
+  cam:"panR",move:"Медленный проезд вправо вдоль оборудования операционной.",
+  arrows:[],
+  video:"Эстетичный проезд по новому оборудованию и операционной: микроскоп, монитор, холодный голубой свет. Без самой операции.",
+  lens:"Проезд гимбала, 35 мм",sound:"Гул техники",cut:"Оборудование → детали"},
+ {id:"S5",spine:true,dur:1.5,type:"live",img:"S5",loc:"Клиника, кабинет диагностики",vo:"Лазерная коррекция зрения…",
+  cam:"push",move:"Три детали по 0,5 с, на каждой лёгкий наезд. Линза прибора и зрачок стыкуются по форме круга.",
+  arrows:[[16,50,16,50,""]],
+  video:"Нарезка 3 деталей по 0,5 с: линза прибора ↔ зрачок Артёма (стык по форме), руки врача на джойстике, экран с картой глаза.",
+  lens:"Макро, детали",sound:"Щелчки аппаратуры в ритм",cut:"Зрачок → герой уже без очков"},
+ {id:"S6",spine:true,dur:1.5,type:"live",img:"S6",loc:"Клиника, кабинет",vo:"…в клинике доктора Гаджиева.",
+  cam:"push",move:"Очень медленный наезд. Врач кладёт руку на плечо Артёма, короткий кивок.",
+  arrows:[[18,44,10,46,"рука на плечо"]],
+  video:"Врач и Артём уже без очков у аппарата. Рука врача на плече, короткий кивок. Врач смотрит на пациента, а не в монитор.",
+  lens:"Средний двойной, на уровне глаз",sound:"Мягкий синт",cut:"Тот же кабинет"},
+ {id:"+G",spine:false,dur:1.9,type:"live",img:"pG",loc:"Клиника, кабинет",vo:"Диагностика, современное оборудование, опытные врачи.",
+  cam:"static",move:"Через плечо, статика. Врач жестом показывает на экран, Артём наклоняется к нему.",
+  arrows:[[56,62,40,58,"жест к экрану"],[80,40,74,44,"наклоняется"]],
+  video:"Врач показывает Артёму на экране карту его глаза, Артём наклоняется и кивает.",
+  lens:"Средний через плечо",sound:"Мягкий синт",cut:"Экран → герой встаёт"},
+ {id:"S7",spine:true,dur:2.0,type:"live",img:"S7",loc:"Клиника, кабинет",
+  cam:"static",move:"Полная статика, самый долгий кадр. Рука поднимается к переносице и замирает.",
+  arrows:[[50,98,50,46,"рука к переносице"]],
+  video:"Фантомный жест. Артём встаёт, рука по привычке тянется к переносице, а очков нет. Замирает, мир вокруг резкий, еле заметная ухмылка.",
+  lens:"Крупный, статика (выдох)",sound:"Тишина → музыка возвращается",cut:"Ухмылка → снова в деле"},
+ {id:"+H",spine:false,dur:1.9,type:"ai",img:"pH",loc:"Ночной город (ИИ)",vo:"Теперь — только скорость.",
+  cam:"panR",move:"Панорама вправо за героем. Он тормозит точно у подъезда с номером 42.",
+  arrows:[[64,72,84,72,"тормозит у подъезда"]],
+  video:"Ночная доставка, но всё резко: Артём издалека читает номер дома и тормозит точно у подъезда.",
+  lens:"Средне-общий, глубокая резкость",sound:"Музыкальный drop",cut:"Торможение → пэкшот"},
+ {id:"S8",spine:true,dur:4.5,dur30:4.3,type:"ai",img:"S8",loc:"Ночной город (ИИ) + графика",vo:"Всего 15 000 рублей. Смотри на город чётко.",
+  cam:"pull",move:"Отъезд, герой уезжает вправо вглубь кадра. Слева проявляется логотип и цена.",
+  arrows:[[86,64,96,58,"уезжает"]],
+  video:"1,5 с: Артём уверенно мчит по ночному городу, всё резко. Затем фирменный шаблон: фиолетово-синий фон, зелёное свечение, логотип «глаз-компас».",
+  lens:"Общий → графика, место под логотип слева",sound:"Финальный аккорд",
+  title:"Лазерная коррекция зрения — 15 000 ₽ · ☎ 97-99-09 · ул. Доваторцев 86/1, 86/2",cut:"—"}
+];
+const CAM_NAME={push:"наезд",pull:"отъезд",panR:"панорама вправо",panL:"панорама влево",tiltU:"вверх",tiltD:"опуск",drone:"дрон, поворот",static:"статика"};
+
+/* screenplay text, per shot; inserts only shown in 30 s */
+const SCRIPT={
+ S1:["НАТ. НОЧНОЙ ГОРОД — УЛИЦА","Мокрый асфальт отражает фиолетовые и зелёные вывески. Колесо курьерского велосипеда на полной скорости влетает в лужу. Брызги в рапиде летят прямо на нас."],
+ S2:["","АРТЁМ (22), капюшон, термокороб за спиной, мчится сквозь ночь. Очки в каплях дождя. Взгляд как у героя боевика."],
+ "+A":["","Сверху: одинокий курьер прорезает неоновую улицу, оставляя за собой световые следы."],
+ "+B":["НАТ. У ДОМА","Глазами Артёма: номер на стене расплывается за каплями на линзах. Палец поправляет очки. Резче не становится."],
+ "+C":["ИНТ. ОБЩАГА — НОЧЬ","Стол под лампой: контейнер для линз, капли, чек на 4 990 ₽. Артём трёт красные глаза."],
+ S3:["ИНТ. ПОДЪЕЗД","Артём влетает с холода в тепло. Очки мгновенно белеют. Белое заливает экран."],
+ "+D":["ИНТ. КЛИНИКА — ЗОНА ОЖИДАНИЯ","Артём протирает очки краем худи. Надевает. Очки снова сползают."],
+ "+E":["","Он опускает очки на кончик носа и смотрит прямо на нас с каменным лицом. Снимает очки, линза проходит перед объективом."],
+ S4:["ИНТ. КЛИНИКА ДОКТОРА ГАДЖИЕВА — КАБИНЕТ","Из белого проявляется светлый кабинет с новым оборудованием. ВРАЧ поворачивается навстречу."],
+ "+F":["ИНТ. КЛИНИКА — ОПЕРАЦИОННАЯ","Тихий проезд вдоль оборудования: микроскоп, монитор, холодный голубой свет."],
+ S5:["ИНТ. КЛИНИКА — КАБИНЕТ","Линза прибора. Зрачок Артёма того же размера. Руки врача на джойстике. Цветная карта глаза на экране."],
+ S6:["","Артём уже без очков. Врач кладёт ему руку на плечо и коротко кивает."],
+ "+G":["","Врач показывает на экране карту его глаза. Артём наклоняется ближе и кивает."],
+ S7:["","Артём встаёт. Рука по привычке тянется поправить очки и замирает у переносицы: очков нет. Мир вокруг резкий. Еле заметная ухмылка."],
+ "+H":["НАТ. НОЧНОЙ ГОРОД","Та же ночь, тот же дождь. Артём издалека читает номер дома и тормозит точно у подъезда."],
+ S8:["НАТ. НОЧНОЙ ГОРОД / ПЭКШОТ","Артём уверенно уезжает вглубь резкого ночного города. Проявляется фирменный экран клиники. Титр: «Лазерная коррекция зрения — 15 000 ₽»."]
+};
+
+const state={v:"15",f:"all",q:"",arrows:true};
+let done={};
+try{done=JSON.parse(localStorage.getItem("gk-done")||"{}")}catch(e){done={}}
+try{const s=JSON.parse(localStorage.getItem("gk-view")||"{}");if(s.v)state.v=s.v;if(s.f)state.f=s.f}catch(e){}
+const fmt=t=>{const m=Math.floor(t/60),s=t-m*60;return m+":"+s.toFixed(1).padStart(4,"0")};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function timeline(){
+  const list=SHOTS.filter(s=>state.v==="30"||s.spine);let t=0;
+  return list.map(s=>{const d=state.v==="30"&&s.dur30?s.dur30:s.dur;const o={...s,start:t,end:t+d,d};t+=d;return o});
+}
+
+/* arrows svg: viewBox 160x90 */
+function arrowSVG(s){
+  const X=v=>v*1.6,Y=v=>v*.9;let out=`<defs>
+    <marker id="ho" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--arrow-obj)"/></marker>
+    <marker id="hc" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--arrow-cam)"/></marker></defs>`;
+  const line=(x1,y1,x2,y2,c,m,dash)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="1.6" stroke-linecap="round" ${dash?'stroke-dasharray="3 2"':""} marker-end="url(#${m})"/>`;
+  const label=(x,y,t,c)=>t?`<text x="${x}" y="${y}" fill="${c}" font-size="4.2" font-family="JetBrains Mono,monospace" font-weight="600" paint-order="stroke" stroke="rgba(0,0,0,.75)" stroke-width="1.2">${esc(t)}</text>`:"";
+  const C="var(--arrow-cam)",O="var(--arrow-obj)";
+  switch(s.cam){
+    case "push": [[14,12,30,24],[146,12,130,24],[14,78,30,66],[146,78,130,66]].forEach(a=>out+=line(...a,C,"hc",1));break;
+    case "pull": [[30,24,14,12],[130,24,146,12],[30,66,14,78],[130,66,146,78]].forEach(a=>out+=line(...a,C,"hc",1));break;
+    case "panR": out+=line(40,84,120,84,C,"hc",1);break;
+    case "panL": out+=line(120,84,40,84,C,"hc",1);break;
+    case "tiltU": out+=line(152,70,152,20,C,"hc",1);break;
+    case "tiltD": out+=line(152,20,152,70,C,"hc",1);break;
+    case "drone": out+=`<path d="M128 14 A16 16 0 0 1 146 30" fill="none" stroke="${C}" stroke-width="1.6" stroke-dasharray="3 2" marker-end="url(#hc)"/>`;break;
+  }
+  out+=label(4,8,"КАМЕРА: "+CAM_NAME[s.cam],C);
+  (s.arrows||[]).forEach(a=>{if(a[0]===a[2]&&a[1]===a[3])return;out+=line(X(a[0]),Y(a[1]),X(a[2]),Y(a[3]),O,"ho");
+    const lx=Math.min(X(a[2])+2,120),ly=Math.max(Y(a[3])-2,14);out+=label(lx,ly,a[4],O)});
+  return out;
+}
+/* camera transform for progress p 0..1 */
+function camTransform(cam,p){
+  const e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+  switch(cam){
+    case "push":return `scale(${1+.14*e})`;
+    case "pull":return `scale(${1.14-.14*e})`;
+    case "panR":return `scale(1.12) translateX(${4-8*e}%)`;
+    case "panL":return `scale(1.12) translateX(${-4+8*e}%)`;
+    case "tiltU":return `scale(1.12) translateY(${-4+8*e}%)`;
+    case "tiltD":return `scale(1.12) translateY(${4-8*e}%)`;
+    case "drone":return `scale(${1.1+.04*e}) rotate(${3*e}deg)`;
+    default:return `scale(${1+.02*e})`;
+  }
+}
+
+function field(cls,label,val){return val?`<div class="f ${cls}"><dt>${label}</dt><dd>${esc(val)}</dd></div>`:""}
+function render(){
+  const tl=timeline();
+  document.getElementById("m-dur").textContent=state.v==="30"?"0:30":"0:15";
+  document.getElementById("m-scenes").textContent=tl.length;
+  const q=state.q.trim().toLowerCase();
+  const vis=tl.filter(s=>(state.f==="all"||s.type===state.f)&&(!q||[s.id,s.loc,s.vo,s.video,s.move,s.lens,s.sound,s.title,s.cut].join(" ").toLowerCase().includes(q)));
+  document.getElementById("list").innerHTML=`<div class="count">Блоков: ${vis.length}</div>`+(vis.length?vis.map(s=>{
+    const isDone=!!done[s.id];
+    return `<article class="card${s.spine?"":" insert"}${isDone?" done":""}" data-id="${s.id}">
+      <div class="chead">
+        <span class="num">${s.id}</span>
+        ${isDone?'<span class="tag done">✓ Снято</span>':""}
+        <span class="tc-badge">${fmt(s.start)}–${fmt(s.end)}</span>
+        <span class="tag ${s.type}">${s.type==="ai"?"ИИ · Seedance":"Съёмка"}</span>
+        ${s.spine?"":'<span class="tag ins">вставка 30 с</span>'}
+        <span class="dur">${s.d.toFixed(1)} с</span>
+        <span class="sp"></span>
+        <button class="icon-btn jump" title="Смотреть в аниматике" aria-label="Смотреть ${s.id} в аниматике">▶</button>
+        <button class="icon-btn chk" aria-pressed="${isDone}" aria-label="Отметить ${s.id} как снятый" title="Отметить как снятый">✓</button>
+      </div>
+      <div class="cbody">
+        <figure><img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">${state.arrows?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
+        <dl class="fields">
+          ${field("","Локация",s.loc)}
+          ${field("vo","Голос",s.vo)}
+          ${field("","Видеоряд",s.video)}
+          ${field("move","Движение",s.move)}
+          ${field("","Камера",s.lens)}
+          ${field("","Звук",s.sound)}
+          ${field("title","Титр",s.title)}
+          ${field("","Стык",s.cut)}
+        </dl>
+      </div></article>`}).join(""):'<div class="empty">Ничего не нашлось. Попробуйте другое слово.</div>');
+  const total=tl.length,dn=tl.filter(s=>done[s.id]).length;
+  document.getElementById("p-done").textContent=dn;
+  document.getElementById("p-total").textContent=total;
+  document.getElementById("p-bar").style.width=(total?dn/total*100:0)+"%";
+  document.getElementById("tc-body").innerHTML=tl.map(s=>`<tr><td><b>${s.id}</b></td><td style="font-family:var(--f-mono);white-space:nowrap">${fmt(s.start)}–${fmt(s.end)}</td><td>${s.type==="ai"?"ИИ":"Съёмка"}</td><td>${CAM_NAME[s.cam]}</td><td><i>${esc(s.vo||"—")}</i></td></tr>`).join("");
+  /* screenplay */
+  document.getElementById("script-ver").textContent=state.v==="30"?"версия 30 с":"версия 15 с";
+  document.getElementById("screen").innerHTML=tl.map(s=>{const [h,txt]=SCRIPT[s.id];
+    return `<div class="${s.spine?"":"ins"}">${h?`<div class="scene">${esc(h)}</div>`:""}${s.spine?"":`<div class="ins-note">вставка ${s.id}, только в 30 с</div>`}<p>${esc(txt)}</p>${s.vo?`<div class="vo"><b>ГОЛОС ЗА КАДРОМ</b>${esc(s.vo)}</div>`:""}</div>`}).join("")+
+    `<p style="margin-top:20px;color:var(--muted);font-size:13px">Через весь ролик: плашка «Имеются противопоказания. Необходимо проконсультироваться со специалистом».</p>`;
+  ["v15","v30"].forEach(id=>document.getElementById(id).setAttribute("aria-pressed",state.v===id.slice(1)));
+  document.querySelectorAll("[data-f]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===state.f));
+  try{localStorage.setItem("gk-view",JSON.stringify({v:state.v,f:state.f}))}catch(e){}
+  buildStrip();
+}
+
+/* ---- animatic player ---- */
+const P={t:0,playing:false,last:0,cur:null};
+const $=id=>document.getElementById(id);
+function buildStrip(){
+  const tl=timeline();
+  $("strip").innerHTML=tl.map(s=>`<button class="${s.type}" style="--d:${s.d}" data-id="${s.id}" title="${s.id} · ${fmt(s.start)}">${s.id}</button>`).join("");
+  P.t=Math.min(P.t,tl.at(-1).end-.001);drawFrame();
+}
+function drawFrame(){
+  const tl=timeline(),total=tl.at(-1).end;
+  const s=tl.find(x=>P.t<x.end)||tl.at(-1);const p=Math.min(1,Math.max(0,(P.t-s.start)/s.d));
+  if(P.cur!==s.id){$("st-img").src=`img/${s.img}.jpg`;$("st-arrows").innerHTML=arrowSVG(s);P.cur=s.id;
+    $("st-id").textContent=s.id;$("st-type").textContent=s.type==="ai"?"ИИ":"СЪЁМКА";$("st-type").className="tag "+s.type;
+    $("st-move").textContent="· "+CAM_NAME[s.cam];$("st-sub").textContent=s.vo||"";
+    document.querySelectorAll("#strip button").forEach(b=>b.classList.toggle("cur",b.dataset.id===s.id));}
+  $("st-arrows").style.display=state.arrows?"":"none";
+  $("st-img").style.transform=camTransform(s.cam,p);
+  $("st-tc").textContent=fmt(P.t);$("st-time").textContent=fmt(P.t)+" / "+fmt(total);
+}
+function tick(now){
+  if(!P.playing)return;const dt=(now-P.last)/1000;P.last=now;P.t+=dt;
+  const total=timeline().at(-1).end;
+  if(P.t>=total){P.t=total-.001;P.playing=false;$("play").textContent="▶ Смотреть";}
+  drawFrame();if(P.playing)requestAnimationFrame(tick);
+}
+function play(){const total=timeline().at(-1).end;if(P.t>=total-.01)P.t=0;P.playing=true;P.last=performance.now();$("play").textContent="❚❚ Пауза";requestAnimationFrame(tick)}
+function pause(){P.playing=false;$("play").textContent="▶ Смотреть"}
+$("play").onclick=()=>P.playing?pause():play();
+$("restart").onclick=()=>{P.t=0;P.cur=null;drawFrame();play()};
+$("tog-arrows").onclick=()=>{state.arrows=!state.arrows;$("tog-arrows").textContent="Стрелки: "+(state.arrows?"вкл":"выкл");$("tog-arrows").setAttribute("aria-pressed",state.arrows);render();drawFrame()};
+$("strip").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const s=timeline().find(x=>x.id===b.dataset.id);P.t=s.start;P.cur=null;drawFrame()});
+
+$("v15").onclick=()=>{state.v="15";P.t=0;P.cur=null;pause();render()};
+$("v30").onclick=()=>{state.v="30";P.t=0;P.cur=null;pause();render()};
+document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{state.f=b.dataset.f;render()});
+$("q").addEventListener("input",e=>{state.q=e.target.value;render()});
+$("list").addEventListener("click",e=>{
+  const card=e.target.closest(".card");if(!card)return;const id=card.dataset.id;
+  if(e.target.closest(".chk")){done[id]=!done[id];try{localStorage.setItem("gk-done",JSON.stringify(done))}catch(err){}render();return}
+  if(e.target.closest(".jump")){const s=timeline().find(x=>x.id===id);P.t=s.start;P.cur=null;drawFrame();$("stage").scrollIntoView({behavior:"smooth",block:"center"});play()}
+});
+[["b-intro","p-intro"],["b-hero","p-hero"],["b-timing","p-timing"]].forEach(([b,p])=>{
+  const btn=$(b),pan=$(p);btn.onclick=()=>{const open=pan.hidden;pan.hidden=!open;btn.setAttribute("aria-expanded",open)};
+});
+render();
+</script>
+</body>
+</html>
