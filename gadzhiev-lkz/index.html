@@ -154,6 +154,10 @@ main{padding-block:20px 60px;display:flex;flex-direction:column;gap:16px}
 .cbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
 .cbody figure{margin:0;background:var(--stage);position:relative;align-self:start}
 .cbody figure img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.cbody figure video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.cbody figure .vlink{position:absolute;right:8px;bottom:8px;font:600 12px var(--f-mono);color:#fff;background:rgba(0,0,0,.6);padding:5px 9px;border-radius:999px;text-decoration:none}
+.tag.vid{background:var(--emerald);color:#fff}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 .cbody figure svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .fields{padding:14px 18px;display:flex;flex-direction:column;gap:9px;min-width:0;margin:0}
 .f{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:10px;font-size:14px}
@@ -258,6 +262,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </div>
   <div class="stage" id="stage">
     <img id="st-img" src="img/S1.jpg" alt="Текущий кадр аниматика">
+    <video id="st-vid" src="video/lecture_ramp.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
     <svg class="arrows" id="st-arrows" viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"></svg>
     <div class="hud"><span id="st-id">S1</span><span id="st-tc">0:00.0</span><span class="tag" id="st-type">ИИ</span><span id="st-move" style="font-weight:400;opacity:.9"></span></div>
     <div class="sub" id="st-sub"></div>
@@ -385,17 +390,17 @@ const SCRIPT_A={
 
 
 const SHOTS_B=[
- {id:"L1",spine:true,dur:1.0,type:"ai",img:"v2L1",loc:"Аудитория, утро (ИИ)",
+ {id:"L1",spine:true,dur:0.5,type:"ai",img:"v2L1",clip:"lecture_L1",ramp:0,edit:"Видео Seedance, 0–2 с исходника. В монтаже ускорено в 4 раза: 2 с → 0,5 с.",loc:"Аудитория, утро (ИИ)",
   cam:"panL",move:"Медленная дуга сбоку. Артём открывает тетрадь и начинает писать.",
   arrows:[[24,84,24,72,"начинает писать"]],
   video:"Лекционная аудитория. Артём за партой, смотрит влево, начинает записывать. Окна слева, мягкий дневной свет.",
   lens:"Общий, камера на уровне сидящего",sound:"Шорох страниц",cut:"Общий → макро той же руки (по действию «пишет»)"},
- {id:"L2a",spine:true,dur:0.6,type:"ai",img:"v2L2a",loc:"Аудитория (ИИ)",
+ {id:"L2a",spine:true,dur:0.5,type:"ai",img:"v2L2a",clip:"lecture_L2a",ramp:0.5,edit:"Видео Seedance, 2–4 с исходника. Ускорено в 4 раза: 2 с → 0,5 с.",loc:"Аудитория (ИИ)",
   cam:"tiltU",move:"Робо-рука, начало движения: макро на кончике ручки, камера уходит назад и вверх.",
   arrows:[[52,92,42,84,"пишет"]],
   video:"Крупно ручка и рука, та же рука, что на общем плане. Ось 180° сохранена: герой смотрит влево.",
   lens:"Макро, малая глубина резкости",sound:"Скрип ручки",cut:"Одно движение с L2b"},
- {id:"L2b",spine:true,dur:0.7,type:"ai",img:"v2L2b",loc:"Аудитория (ИИ)",vo:"Очки сползают…",
+ {id:"L2b",spine:true,dur:1.3,type:"ai",img:"v2L2b",clip:"lecture_L2b",ramp:1.0,edit:"Видео Seedance, 4–7 с исходника. Подъём робо-руки ускорен (2 с → 0,3 с), жест «поправляет очки» в реальном времени (1 с).",loc:"Аудитория (ИИ)",vo:"Очки сползают…",
   cam:"tiltU",move:"Робо-рука, конец движения: камера поднялась до уровня очков. Очки сползли, он поправляет их пальцем.",
   arrows:[[68,78,68,44,"поправляет очки"]],
   video:"Тот же ракурс, что L1: три четверти, смотрит влево. Очки на кончике носа, палец толкает их вверх.",
@@ -550,7 +555,7 @@ function render(){
         ${isDone?'<span class="tag done">✓ Снято</span>':""}
         <span class="tc-badge">${fmt(s.start)}–${fmt(s.end)}</span>
         <span class="tag ${s.type}">${s.type==="ai"?"ИИ · Seedance":"Съёмка"}</span>
-        ${s.spine?"":'<span class="tag ins">вставка 30 с</span>'}
+        ${s.spine?"":'<span class="tag ins">вставка 30 с</span>'}${s.clip?'<span class="tag vid">▶ видео готово</span>':""}
         <span class="dur">${s.d.toFixed(1)} с</span>
         <span class="sp"></span>
         <button class="icon-btn arr" aria-pressed="${!hid[s.id]}" title="Показать или скрыть стрелки на этом кадре" aria-label="Стрелки на кадре ${s.id}">↗ ${state.arrows&&!hid[s.id]?"вкл":"выкл"}</button>
@@ -558,7 +563,7 @@ function render(){
         <button class="icon-btn chk" aria-pressed="${isDone}" aria-label="Отметить ${s.id} как снятый" title="Отметить как снятый">✓</button>
       </div>
       <div class="cbody">
-        <figure><img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">${state.arrows&&!hid[s.id]?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
+        <figure>${s.clip?`<video src="video/${s.clip}.mp4" poster="img/${s.img}.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Видео Seedance, кадр ${s.id}"></video><a class="vlink" href="video/lecture_full.mp4" target="_blank" rel="noopener">▶ 7 с со звуком</a>`:`<img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">`}${!s.clip&&state.arrows&&!hid[s.id]?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
         <dl class="fields">
           ${field("","Локация",s.loc)}
           ${field("vo","Голос",s.vo)}
@@ -568,6 +573,7 @@ function render(){
           ${field("","Звук",s.sound)}
           ${field("title","Титр",s.title)}
           ${field("","Стык",s.cut)}
+          ${field("","Монтаж",s.edit)}
         </dl>
       </div></article>`}).join(""):'<div class="empty">Ничего не нашлось. Попробуйте другое слово.</div>');
   const total=tl.length,dn=tl.filter(s=>done[VER+s.id]).length;
@@ -601,7 +607,13 @@ function drawFrame(){
     $("st-id").textContent=s.id;$("st-type").textContent=s.type==="ai"?"ИИ":"СЪЁМКА";$("st-type").className="tag "+s.type;
     $("st-move").textContent="· "+CAM_NAME[s.cam];$("st-sub").textContent=s.vo||"";
     document.querySelectorAll("#strip button").forEach(b=>b.classList.toggle("cur",b.dataset.id===s.id));}
-  $("st-arrows").style.display=state.arrows?"":"none";
+  const V=$("st-vid"),hasV=s.ramp!==undefined;
+  V.style.display=hasV?"block":"none";$("st-img").style.visibility=hasV?"hidden":"";
+  if(hasV){const vt=s.ramp+(P.t-s.start);
+    if(P.playing){if(V.paused){V.currentTime=vt;V.play().catch(()=>{})}else if(Math.abs(V.currentTime-vt)>.15)V.currentTime=vt}
+    else{if(!V.paused)V.pause();if(Math.abs(V.currentTime-vt)>.02)V.currentTime=vt}}
+  else if(!V.paused)V.pause();
+  $("st-arrows").style.display=state.arrows&&!hasV?"":"none";
   $("st-img").style.transform=camTransform(s.cam,p);
   $("st-tc").textContent=fmt(P.t);$("st-time").textContent=fmt(P.t)+" / "+fmt(total);
 }
