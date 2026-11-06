@@ -547,7 +547,7 @@ function render(){
         <button class="icon-btn chk" aria-pressed="${isDone}" aria-label="Отметить ${s.id} как снятый" title="Отметить как снятый">✓</button>
       </div>
       <div class="cbody">
-        <figure>${s.clip?`<video src="video/${s.clip}.mp4" poster="img/${s.img}.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Видео Seedance, кадр ${s.id}"></video><a class="vlink" href="video/${s.clip}.mp4" target="_blank" rel="noopener">▶ 8 с со звуком</a>`:`<img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">`}${!s.clip&&state.arrows&&!hid[s.id]?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
+        <figure>${s.clip?(state.v==="30"?`<video src="video/${s.clip}.mp4" poster="img/${s.img}.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Видео Seedance, кадр ${s.id}"></video><a class="vlink" href="video/${s.clip}.mp4" target="_blank" rel="noopener">▶ 8 с со звуком</a>`:`<video src="video/${s.vid15}_sound.mp4" poster="img/${s.img}.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Нарезка 15 с, кадр ${s.id}"></video><a class="vlink" href="video/${s.vid15}_sound.mp4" target="_blank" rel="noopener">▶ нарезка 2,8 с со звуком</a>`):`<img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">`}${!s.clip&&state.arrows&&!hid[s.id]?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
         <dl class="fields">
           ${field("","Локация",s.loc)}
           ${field("vo","Голос",s.vo)}
