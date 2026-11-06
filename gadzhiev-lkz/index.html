@@ -58,11 +58,22 @@ h2{font-family:var(--f-display);font-weight:500;font-size:18px;margin:0}
 .meta{font-family:var(--f-mono);font-size:13px;color:var(--muted);display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .meta b{color:var(--fg)}
 .lead{color:var(--muted);max-width:60ch;margin:14px auto 0}
-.vers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:640px;margin:20px auto 0}
+.vers{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:12px;max-width:680px;margin:20px auto 0;align-items:center}
 .vers button{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:14px;padding:12px 14px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:3px}
 .vers button b{font:500 14px var(--f-display)}
 .vers button span{font-size:13px;color:var(--muted)}
-.vers button[aria-pressed="true"]{border-color:var(--violet);box-shadow:0 0 0 2px var(--violet) inset}
+.vers .ver-main{position:relative;border:2px solid var(--emerald);background:linear-gradient(135deg,var(--violet-soft),var(--surface) 70%);padding:14px 16px;animation:verglow 2.4s ease-in-out infinite}
+.vers .ver-main b{font-size:17px;color:var(--fg)}
+.vers .ver-main span{color:var(--fg);opacity:.8}
+.ver-badge{align-self:flex-start;font:600 11px/1 var(--f-mono);font-style:normal;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--emerald);padding:5px 8px;border-radius:999px;margin-bottom:4px}
+@keyframes verglow{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--emerald) 0%,transparent),0 0 6px color-mix(in srgb,var(--emerald) 25%,transparent)}50%{box-shadow:0 0 0 4px color-mix(in srgb,var(--emerald) 22%,transparent),0 0 18px color-mix(in srgb,var(--emerald) 45%,transparent)}}
+.vers .ver-alt{background:transparent;border:1px dashed var(--line);opacity:.55;filter:grayscale(1);padding:10px 12px}
+.vers .ver-alt b{font-size:13px;color:var(--muted)}
+.vers .ver-alt span{font-size:12px}
+.vers .ver-alt:hover{opacity:.8}
+.vers .ver-alt[aria-pressed="true"]{opacity:.85;border-style:solid;border-color:var(--muted)}
+.vers .ver-main[aria-pressed="false"]{animation-duration:1.4s}
+@media (prefers-reduced-motion:reduce){.vers .ver-main{animation:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--emerald) 30%,transparent)}}
 @media (max-width:560px){.vers{grid-template-columns:1fr}}
 .pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
 .pill,.btn{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 16px;font:500 14px var(--f-body);cursor:pointer}
@@ -177,13 +188,13 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
 
 <header class="hero wrap">
   <div class="eyebrow">Глазная клиника доктора Гаджиева · сценарий и раскадровка</div>
-  <h1>Лазерная коррекция зрения за&nbsp;15&nbsp;000&nbsp;₽: <span id="h-name">«Враг в очках»</span></h1>
+  <h1>Лазерная коррекция зрения за&nbsp;15&nbsp;000&nbsp;₽: <span id="h-name">«Жест»</span></h1>
   <div class="meta"><span>⏱ <b id="m-dur">0:15</b></span><span><b id="m-scenes">8</b> сцен</span><span>формат <b>16:9</b></span><span>ТВ · сайт · соцсети</span></div>
   <div class="vers" role="group" aria-label="Вариант сценария">
-    <button data-ver="A" aria-pressed="true"><b>Вариант A · «Враг в очках»</b><span>Экшен с иронией: курьер против своих очков</span></button>
-    <button data-ver="B" aria-pressed="false"><b>Вариант B · «Жест»</b><span>Спокойная история: одно движение, склеенное по жесту</span></button>
+    <button data-ver="B" class="ver-main" aria-pressed="true"><i class="ver-badge">★ Утверждён · эталонный сценарий</i><b>Вариант B · «Жест»</b><span>Три ситуации, где мешают очки → клиника → жизнь без очков</span></button>
+    <button data-ver="A" class="ver-alt" aria-pressed="false"><b>Вариант A · «Враг в очках»</b><span>Черновик для сравнения</span></button>
   </div>
-  <p class="lead">Два варианта ролика на выбор. Основная версия 15 секунд. Версия 30 секунд для сайта — это те же кадры плюс вставки, без перестановок. Сначала прочитайте сценарий, дальше идут кадры с описаниями, а в самом конце — аниматик.</p>
+  <p class="lead">Утверждён вариант B «Жест», работаем по нему. Вариант A оставлен только для сравнения. Основная версия 15 секунд. Версия 30 секунд для сайта — это те же кадры плюс вставки, без перестановок. Сначала прочитайте сценарий, дальше идут кадры с описаниями, а в самом конце — аниматик.</p>
   <div class="pills">
     <button class="pill" id="b-intro" aria-expanded="false" aria-controls="p-intro">▸ Вводные</button>
     <button class="pill" id="b-hero" aria-expanded="false" aria-controls="p-hero">▸ Герой</button>
@@ -638,7 +649,7 @@ function setVer(v,push){if(!META[v])v="A";VER=v;SHOTS=META[v].shots;SCRIPT=META[
   if(push){try{history.replaceState(null,"","#"+v.toLowerCase())}catch(e){}}
   P.t=0;P.cur=null;pause();render()}
 document.querySelectorAll("[data-ver]").forEach(b=>b.onclick=()=>setVer(b.dataset.ver,true));
-setVer((location.hash||"").replace("#","").toUpperCase()==="B"?"B":"A",false);
+setVer((location.hash||"").replace("#","").toUpperCase()==="A"?"A":"B",false);
 </script>
 </body>
 </html>
