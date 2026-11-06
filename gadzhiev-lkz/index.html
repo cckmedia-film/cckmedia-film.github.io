@@ -262,7 +262,7 @@ footer{color:var(--muted);font-size:13px;padding-block:0 40px}
   </div>
   <div class="stage" id="stage">
     <img id="st-img" src="img/S1.jpg" alt="Текущий кадр аниматика">
-    <video id="st-vid" src="video/lecture_ramp.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
+    <video id="st-vid" src="video/lecture_15.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
     <svg class="arrows" id="st-arrows" viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true"></svg>
     <div class="hud"><span id="st-id">S1</span><span id="st-tc">0:00.0</span><span class="tag" id="st-type">ИИ</span><span id="st-move" style="font-weight:400;opacity:.9"></span></div>
     <div class="sub" id="st-sub"></div>
@@ -366,7 +366,7 @@ const SHOTS_A=[
   lens:"Общий → графика, место под логотип слева",sound:"Финальный аккорд",
   title:"Лазерная коррекция зрения — 15 000 ₽ · ☎ 97-99-09 · ул. Доваторцев 86/1, 86/2",cut:"—"}
 ];
-const CAM_NAME={push:"наезд",pull:"отъезд",panR:"панорама вправо",panL:"панорама влево",tiltU:"вверх",tiltD:"опуск",drone:"дрон, поворот",static:"статика"};
+const CAM_NAME={push:"наезд",pull:"отъезд",panR:"панорама вправо",panL:"панорама влево",tiltU:"вверх",tiltD:"опуск",drone:"дрон, поворот",static:"статика",robo:"робо-рука, один дубль"};
 
 /* screenplay text, per shot; inserts only shown in 30 s */
 const SCRIPT_A={
@@ -390,25 +390,12 @@ const SCRIPT_A={
 
 
 const SHOTS_B=[
- {id:"L1",spine:true,dur:0.5,type:"ai",img:"v2L1",clip:"lecture_L1",ramp:0,edit:"Видео Seedance, 0–2 с исходника. В монтаже ускорено в 4 раза: 2 с → 0,5 с.",loc:"Аудитория, утро (ИИ)",
-  cam:"panL",move:"Медленная дуга сбоку. Артём открывает тетрадь и начинает писать.",
-  arrows:[[24,84,24,72,"начинает писать"]],
-  video:"Лекционная аудитория. Артём за партой, смотрит влево, начинает записывать. Окна слева, мягкий дневной свет.",
-  lens:"Общий, камера на уровне сидящего",sound:"Шорох страниц",cut:"Общий → макро той же руки (по действию «пишет»)"},
- {id:"L2a",spine:true,dur:0.5,type:"ai",img:"v2L2a",clip:"lecture_L2a",ramp:0.5,edit:"Видео Seedance, 2–4 с исходника. Ускорено в 4 раза: 2 с → 0,5 с.",loc:"Аудитория (ИИ)",
-  cam:"tiltU",move:"Робо-рука, начало движения: макро на кончике ручки, камера уходит назад и вверх.",
-  arrows:[[52,92,42,84,"пишет"]],
-  video:"Крупно ручка и рука, та же рука, что на общем плане. Ось 180° сохранена: герой смотрит влево.",
-  lens:"Макро, малая глубина резкости",sound:"Скрип ручки",cut:"Одно движение с L2b"},
- {id:"L2b",spine:true,dur:1.3,type:"ai",img:"v2L2b",clip:"lecture_L2b",ramp:1.0,edit:"Видео Seedance, 4–7 с исходника. Подъём робо-руки ускорен (2 с → 0,3 с), жест «поправляет очки» в реальном времени (1 с).",loc:"Аудитория (ИИ)",vo:"Очки сползают…",
-  cam:"tiltU",move:"Робо-рука, конец движения: камера поднялась до уровня очков. Очки сползли, он поправляет их пальцем.",
-  arrows:[[68,78,68,44,"поправляет очки"]],
-  video:"Тот же ракурс, что L1: три четверти, смотрит влево. Очки на кончике носа, палец толкает их вверх.",
-  lens:"Крупный, 50 мм",sound:"Шорох",cut:"Палец у переносицы → руки у рта (рифма жеста)"},
- {id:"+l",spine:false,dur:2.1,type:"ai",img:"v2pl",loc:"Аудитория (ИИ)",
-  cam:"push",move:"Лёгкий наезд с той же стороны. Он подаётся вперёд и щурится на доску, очки снова на кончике носа.",
-  arrows:[[40,40,30,40,"щурится на доску"]],
-  video:"Средний план: тянется к доске, не видит написанного.",lens:"Средний, 50 мм",sound:"Голос лектора глухо",cut:"Лекция → снег"},
+ {id:"L",spine:true,dur:2.8,dur30:7.0,type:"ai",img:"v2L1",clip:"lecture_take",vid15:"lecture_15",vid30:"lecture_30",loc:"Аудитория, утро (ИИ)",vo:"Очки сползают…",
+  cam:"robo",move:"Один дубль робо-руки 8 с: общий → макро ручки → крупно очки → камера чуть отъезжает, он щурится на доску.",
+  arrows:[],
+  video:"Артём записывает лекцию. Очки сползают на кончик носа, он возмущённо толкает их пальцем вверх, поднимает голову и щурится на доску: даже в очках не разобрать.",
+  lens:"40 мм без зума, крупность меняется движением робо-руки",sound:"Скрип ручки, раздражённый выдох, гул аудитории",cut:"Прищур → руки у рта на морозе (рифма жеста)",
+  edit:"30 с: дубль целиком, 1,0–8,0 с исходника (7,0 с). 15 с: склейки внутри дубля по остановкам камеры: общий 0,3–1,1 → макро 2,7–3,3 → крупно, толкает очки 4,6–6,0 (2,8 с). Без ускорений."},
  {id:"+s0",spine:false,dur:2.1,type:"ai",img:"v2ps0",loc:"Зимняя улица, сумерки (ИИ)",vo:"",
   cam:"pull",move:"Высокая точка, медленный отъезд. Снегопад, Артём маленький вдали идёт по тротуару.",
   arrows:[[56,72,56,82,"идёт к камере"]],
@@ -445,32 +432,29 @@ const SHOTS_B=[
   cam:"static",move:"Едет дальше уже без очков, щурится в дождь.",
   arrows:[[50,45,44,40,"щурится"]],
   video:"Средний план: очки сняты, без них ничего не видно.",lens:"Средний, 50 мм",sound:"Дождь",cut:"Мутно → белая клиника"},
- {id:"C1",spine:true,dur:1.2,type:"live",img:"S4",loc:"Клиника, кабинет диагностики",vo:"Лазерная коррекция зрения…",
+ {id:"C1",spine:true,dur:1.2,dur30:1.0,type:"live",img:"S4",loc:"Клиника, кабинет диагностики",vo:"Лазерная коррекция зрения…",
   cam:"panR",move:"Проезд гимбала вправо. Врач поворачивается к пациенту.",arrows:[[10,46,22,44,"врач поворачивается"]],
   video:"Белая тишина: светлый кабинет с новым оборудованием.",lens:"Общий, гимбал",sound:"Тишина",cut:"Общий → детали"},
- {id:"+f",spine:false,dur:2.1,type:"live",img:"pF",loc:"Клиника, операционная",
+ {id:"+f",spine:false,dur:1.2,type:"live",img:"pF",loc:"Клиника, операционная",
   cam:"panR",move:"Медленный проезд вдоль оборудования.",arrows:[],
   video:"Операционная, новое оборудование. Без самой операции.",lens:"Проезд гимбала",sound:"Гул техники",cut:"Оборудование → детали"},
- {id:"C2",spine:true,dur:1.2,type:"live",img:"S5",loc:"Клиника, кабинет диагностики",vo:"…в клинике доктора Гаджиева.",
+ {id:"C2",spine:true,dur:1.2,dur30:1.0,type:"live",img:"S5",loc:"Клиника, кабинет диагностики",vo:"…в клинике доктора Гаджиева.",
   cam:"push",move:"Три детали по 0,4 с: линза прибора ↔ зрачок, руки врача, карта глаза.",arrows:[],
   video:"Детали аппарата и стык линзы со зрачком.",lens:"Макро",sound:"Щелчки аппаратуры",cut:"Зрачок → герой без очков"},
- {id:"+g",spine:false,dur:2.1,type:"live",img:"pG",loc:"Клиника, кабинет",vo:"Диагностика, современное оборудование, опытные врачи.",
+ {id:"+g",spine:false,dur:1.2,type:"live",img:"pG",loc:"Клиника, кабинет",vo:"Диагностика, современное оборудование, опытные врачи.",
   cam:"static",move:"Через плечо. Врач показывает карту глаза на экране.",arrows:[[56,62,40,58,"жест к экрану"]],
   video:"Врач и Артём у экрана с картой глаза.",lens:"Средний через плечо",sound:"Мягкий синт",cut:"Экран → последний жест"},
- {id:"C3",spine:true,dur:2.0,type:"live",img:"S7",loc:"Клиника, кабинет",
+ {id:"C3",spine:true,dur:2.0,dur30:1.6,type:"live",img:"S7",loc:"Клиника, кабинет",
   cam:"static",move:"Полная статика. Рука тянется к переносице, а очков нет.",arrows:[[50,98,50,46,"рука к переносице"]],
   video:"Последний жест: очков нет, лёгкая улыбка.",lens:"Крупный, статика",sound:"Тишина",cut:"Ухмылка → удобно"},
- {id:"F",spine:true,dur:4.5,dur30:4.8,type:"ai",img:"v2F",loc:"Аудитория (ИИ) + графика",vo:"Поправь очки в последний раз. Всего 15 000 рублей.",
+ {id:"F",spine:true,dur:4.0,dur30:4.8,type:"ai",img:"v2F",loc:"Аудитория (ИИ) + графика",vo:"Поправь очки в последний раз. Всего 15 000 рублей.",
   cam:"pull",move:"Отъезд. Слева проявляются логотип и цена.",arrows:[],
   video:"Та же аудитория, что в L1: Артём без очков спокойно пишет и смотрит на доску. Затем пэкшот.",
   lens:"Средний → графика",sound:"Финальный аккорд",
   title:"Лазерная коррекция зрения — 15 000 ₽ · ☎ 97-99-09 · ул. Доваторцев 86/1, 86/2",cut:"—"}
 ];
 const SCRIPT_B={
- L1:["ИНТ. УНИВЕРСИТЕТ — АУДИТОРИЯ — УТРО","АРТЁМ (22) открывает тетрадь и начинает записывать лекцию."],
- L2a:["","Кончик ручки бежит по странице. Камера отрывается от тетради и плывёт вверх."],
- L2b:["","Очки сползли на кончик носа. Артём, не отрываясь, толкает их пальцем обратно."],
- "+l":["","Он подаётся вперёд и щурится на доску: очки снова на кончике носа."],
+ L:["ИНТ. УНИВЕРСИТЕТ — АУДИТОРИЯ — УТРО","АРТЁМ (22) записывает лекцию. Очки сползают на кончик носа, он раздражённо толкает их пальцем обратно, поднимает голову и щурится на доску: даже в очках не разобрать."],
  "+s0":["НАТ. ГОРОДСКАЯ УЛИЦА — ЗИМА — СУМЕРКИ","Сверху: снегопад, огни витрин, Артём маленький вдали идёт по тротуару."],
  S1:["","Идёт снег. Артём останавливается и подносит ладони ко рту."],
  S2:["","Выдох в ладони — пар поднимается, и очки мгновенно затягивает белым."],
@@ -563,7 +547,7 @@ function render(){
         <button class="icon-btn chk" aria-pressed="${isDone}" aria-label="Отметить ${s.id} как снятый" title="Отметить как снятый">✓</button>
       </div>
       <div class="cbody">
-        <figure>${s.clip?`<video src="video/${s.clip}.mp4" poster="img/${s.img}.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Видео Seedance, кадр ${s.id}"></video><a class="vlink" href="video/lecture_full.mp4" target="_blank" rel="noopener">▶ 7 с со звуком</a>`:`<img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">`}${!s.clip&&state.arrows&&!hid[s.id]?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
+        <figure>${s.clip?`<video src="video/${s.clip}.mp4" poster="img/${s.img}.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Видео Seedance, кадр ${s.id}"></video><a class="vlink" href="video/${s.clip}.mp4" target="_blank" rel="noopener">▶ 8 с со звуком</a>`:`<img loading="lazy" src="img/${s.img}.jpg" alt="Кадр ${s.id}">`}${!s.clip&&state.arrows&&!hid[s.id]?`<svg viewBox="0 0 160 90" preserveAspectRatio="none" aria-hidden="true">${arrowSVG(s)}</svg>`:""}</figure>
         <dl class="fields">
           ${field("","Локация",s.loc)}
           ${field("vo","Голос",s.vo)}
@@ -607,9 +591,10 @@ function drawFrame(){
     $("st-id").textContent=s.id;$("st-type").textContent=s.type==="ai"?"ИИ":"СЪЁМКА";$("st-type").className="tag "+s.type;
     $("st-move").textContent="· "+CAM_NAME[s.cam];$("st-sub").textContent=s.vo||"";
     document.querySelectorAll("#strip button").forEach(b=>b.classList.toggle("cur",b.dataset.id===s.id));}
-  const V=$("st-vid"),hasV=s.ramp!==undefined;
+  const V=$("st-vid"),hasV=!!s.vid15;
+  if(hasV){const src="video/"+(state.v==="30"?s.vid30:s.vid15)+".mp4";if(V.getAttribute("src")!==src){V.setAttribute("src",src);V.load()}}
   V.style.display=hasV?"block":"none";$("st-img").style.visibility=hasV?"hidden":"";
-  if(hasV){const vt=s.ramp+(P.t-s.start);
+  if(hasV){const vt=P.t-s.start;
     if(P.playing){if(V.paused){V.currentTime=vt;V.play().catch(()=>{})}else if(Math.abs(V.currentTime-vt)>.15)V.currentTime=vt}
     else{if(!V.paused)V.pause();if(Math.abs(V.currentTime-vt)>.02)V.currentTime=vt}}
   else if(!V.paused)V.pause();
